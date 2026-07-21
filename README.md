@@ -76,7 +76,7 @@ Most space traffic management (STM) companies today sit strictly at the detectio
 
 ## 🛠 Contributing & Next Steps
 
-We are currently raising a pre-seed round to take this prototype to a validated multi-satellite avoidance demo[cite: 1].
+We are currently raising a pre-seed round to validate this prototype with a multi-satellite avoidance demo.
 
 **We are actively seeking:**
 
