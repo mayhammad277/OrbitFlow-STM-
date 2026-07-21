@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OrbitFlow Dynamics | Space Traffic Management</title>
+    <style>
+        :root {
+            --bg-color: #0b1120;
+            --surface-color: #111827;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --accent-cyan: #38bdf8;
+            --accent-green: #4ade80;
+            --border-color: #1e293b;
+        }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem 2rem;
+            background: linear-gradient(180deg, rgba(11,17,32,1) 0%, rgba(17,24,39,1) 100%);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo {
+            width: 250px;
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.15);
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 0 0 0.5rem;
+            letter-spacing: -0.025em;
+        }
+
+        .tagline {
+            font-size: 1.25rem;
+            color: var(--accent-cyan);
+            font-weight: 300;
+            margin: 0 0 2rem;
+            max-width: 600px;
+            margin-inline: auto;
+        }
+
+        .badges {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background-color: rgba(56, 189, 248, 0.1);
+            color: var(--accent-cyan);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #ffffff;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        h3 {
+            color: var(--accent-cyan);
+            margin-top: 2rem;
+        }
+
+        p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        ul {
+            color: var(--text-muted);
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.75rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent-green);
+        }
+
+        .card h4 {
+            margin: 0 0 1rem;
+            color: #ffffff;
+            font-size: 1.1rem;
+        }
+
+        .highlight {
+            color: var(--accent-green);
+            font-weight: 600;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, rgba(74, 222, 128, 0.05) 100%);
+            border: 1px solid rgba(74, 222, 128, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        @media (max-width: 600px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <!-- Referencing your exact image file name -->
+        <img src="WhatsApp Image 2026-07-21 at 13.12.15.jpeg" alt="OrbitFlow Dynamics Logo" class="logo">
+        <h1>OrbitFlow Dynamics</h1>
+        <p class="tagline">Structured, propellant-efficient collision avoidance for satellite constellations[cite: 1].</p>
+        <div class="badges">
+            <span class="badge">Architecture: A* + MARL</span>
+            <span class="badge" style="color: var(--accent-green); border-color: rgba(74, 222, 128, 0.2); background: rgba(74, 222, 128, 0.1);">Prototype Active</span>
+            <span class="badge">Space Traffic Management</span>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <h2>🌌 The Mission</h2>
+            <p>Close-approach events between satellites are rising sharply as constellations scale into the thousands[cite: 1]. Operators today rely on manual conjunction review or simple decentralized avoidance rules, which are slow, propellant-wasteful, and increasingly untenable as encounter rates grow[cite: 1]. On the other hand, fully learned (black-box) collision-avoidance policies are hard to certify or explain to regulators and insurers[cite: 1].</p>
+            <p><strong>OrbitFlow</strong> is a hierarchical planning system that pairs an interpretable, physics-grounded planner with a coordination layer that resolves multi-satellite conflicts efficiently[cite: 1].</p>
+        </section>
+
+        <section>
+            <h2>⚙️ System Architecture</h2>
+            <div class="grid">
+                <div class="card">
+                    <h4>The Generator: A* Search</h4>
+                    <p>Generates a discrete set of safe, low-cost trajectory candidates per satellite[cite: 1]. Orbital dynamics and collision risk are encoded directly into the search, ensuring a structured and auditable process—not a black box[cite: 1].</p>
+                </div>
+                <div class="card">
+                    <h4>The Coordinator: MARL Policy</h4>
+                    <p>A multi-agent coordination layer selects joint maneuvers across satellites to minimize total propellant while enforcing separation constraints[cite: 1]. This avoids the inefficient equilibria that arise when satellites avoid each other independently[cite: 1].</p>
+                </div>
+                <div class="card">
+                    <h4>The Framework: ECI/LVLH</h4>
+                    <p>A hybrid architecture keeps the system physically realistic[cite: 1]. Full orbit propagation and conjunction screening occur in ECI, while local relative-motion planning happens in LVLH to keep the problem tractable[cite: 1].</p>
+                </div>
+                <div class="card">
+                    <h4>The Guarantee: Safety Filter</h4>
+                    <p>Every maneuver proposed by the MARL layer is checked against a constraint-enforcement safety filter before execution[cite: 1]. Separation guarantees hold even if the learned policy behaves unexpectedly, providing the certifiability story insurers need[cite: 1].</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>🤝 Competitive Advantage</h2>
+            <p>Most space traffic management (STM) companies today—such as Kayhan Space, Slingshot Aerospace, COMSPOC, ExoAnalytic Solutions, and Neuraspace—sit at the detection and decision-support layer[cite: 1]. They ingest tracking data and hand each operator a single-satellite maneuver recommendation[cite: 1]. Even the newest automation treats each satellite's avoidance decision independently[cite: 1].</p>
+            <ul>
+                <li><span class="highlight">Intelligence Layer:</span> We generate the candidate maneuver space itself, grounded in orbital dynamics and risk[cite: 1].</li>
+                <li><span class="highlight">Joint Management:</span> Our multi-agent layer optimizes maneuvers jointly across all satellites in an encounter—the coordination problem most STM providers don't touch[cite: 1].</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>🚀 Prototype & Traction</h2>
+            <p>We have built a working prototype running end-to-end on synthetic conjunction scenarios[cite: 1]. The current build includes:</p>
+            <ul>
+                <li>ECI propagation[cite: 1].</li>
+                <li>Two-stage conjunction screening[cite: 1].</li>
+                <li>Verified ECI–LVLH frame transforms[cite: 1].</li>
+                <li>Active A* candidate generator[cite: 1].</li>
+            </ul>
+            <p>Our founding team brings deep RL background in autonomous spacecraft rendezvous, docking, and collision avoidance[cite: 1].</p>
+        </section>
+
+        <section class="cta-box">
+            <h2>Next Steps</h2>
+            <p>We are raising a pre-seed round to take the prototype to a validated multi-satellite avoidance demo (centralized optimizer, then MARL coordination layer)[cite: 1].</p>
+            <p><strong>We are currently looking for:</strong></p>
+            <ul style="text-align: left; max-width: 500px; margin: 1rem auto 0;">
+                <li>A technical co-founder with an orbital mechanics / controls background[cite: 1].</li>
+                <li>A pilot conversation with a constellation operator or space situational awareness (SSA) provider[cite: 1].</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 OrbitFlow Dynamics. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
