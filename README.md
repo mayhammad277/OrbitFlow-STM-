@@ -80,7 +80,9 @@ We are currently raising a pre-seed round to take this prototype to a validated 
 
 **We are actively seeking:**
 
-1. A Technical Co-Founder with an extensive orbital mechanics and controls background[cite: 1].
-2. Pilot conversations with LEO constellation operators and space situational awareness (SSA) providers[cite: 1].
+1. A Technical Co-Founder with an extensive orbital mechanics and controls background.
+2. Pilot conversations with LEO constellation operators and space situational awareness (SSA) providers.
+
+
 
 
