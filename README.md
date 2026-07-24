@@ -76,7 +76,7 @@ Most space traffic management (STM) companies today sit strictly at the detectio
 <img width="1200" height="1200" alt="eci_scenario" src="https://github.com/mayhammad277/OrbitFlow-STM-/blob/main/eci_scenario.png" />
 
 
-<img width="1200" height="1200" alt="lvlh_encounter" src="https://github.com/user-attachments/assets/e90fd1ea-131e-46eb-9f98-369de3f0ae45" />
+<img width="1200" height="1200" alt="lvlh_encounter" src="https://github.com/mayhammad277/OrbitFlow-STM-/blob/main/lvlh_encounter.png" />
 
 
 
