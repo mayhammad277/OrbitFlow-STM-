@@ -73,7 +73,7 @@ Most space traffic management (STM) companies today sit strictly at the detectio
 **OrbitFlow** is fundamentally different: our A* planner generates the candidate maneuver space itself, and our multi-agent layer optimizes those maneuvers jointly to eliminate wasted propellant and prevent new, cascading conflicts[cite: 1]. Our structured-planner-plus-coordination-layer design provides a defensible certifiability story that pure end-to-end ML approaches cannot offer[cite: 1].
 
 
-<img width="1200" height="1200" alt="eci_scenario" src="https://github.com/user-attachments/assets/61681cd6-cda2-45d7-8f8c-608d80107203" />
+<img width="1200" height="1200" alt="eci_scenario" src="https://github.com/mayhammad277/OrbitFlow-STM-/blob/main/eci_scenario.png" />
 
 
 <img width="1200" height="1200" alt="lvlh_encounter" src="https://github.com/user-attachments/assets/e90fd1ea-131e-46eb-9f98-369de3f0ae45" />
