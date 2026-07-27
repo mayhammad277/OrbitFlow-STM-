@@ -99,15 +99,6 @@ Our physics-grounded planning and coordination architecture provides a defensibl
 
 ---
 
-## 📊 Market Opportunity
-
-Avoidance is routine. Coordination isn't—yet. The STM software and collision-avoidance market is projected to grow from **$2.8B in 2025** to **$7.4B by 2035**[cite: 6].
-
-**Target Geography:** US and Europe first—largest operator concentration, most mature screening infrastructure, and EU Space Strategy pressure toward certifiable avoidance[cite: 6].
-
-**Target Customers:** LEO constellation operators (core); SSA/STM providers as channel partners; satellite insurers needing an auditable safety case[cite: 6].
-
----
 
 ## 🗺️ Roadmap
 
@@ -137,10 +128,7 @@ We are currently raising a pre-seed round to validate this prototype with a mult
 
 ## 📬 Contact
 
-
-👨‍💻 **Menah Hammad, CTO**  
-👩‍💻 **May Hammad, CEO**
-
+may23773@gmail.com
 ---
 
 *OrbitFlow Dynamics — Structured, propellant-efficient collision avoidance for satellite constellations.*
