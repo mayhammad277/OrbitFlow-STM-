@@ -218,7 +218,7 @@ footer a{color:var(--green);text-decoration:none;}
       <div class="hero-eyebrow">Structured Autonomy for Orbital Traffic</div>
       <h1>Don't just dodge.<br><em>Coordinate</em> the swarm.</h1>
       <p class="hero-sub">
-        OrbitFlow Dynamics plans and coordinates collision-avoidance maneuvers across entire constellations — an interpretable planner, a joint-maneuver coordination layer, and a hard safety guarantee, instead of one satellite dodging blind.
+        OrbitFlow Dynamics plans and coordinates collision-avoidance maneuvers across entire constellations — combining intelligent path planning, fleet-wide coordination, and hard safety guarantees, instead of one satellite dodging blind.
       </p>
       <div class="cta-row">
         <a href="#build" class="btn-p">See the Architecture</a>
@@ -267,28 +267,28 @@ footer a{color:var(--green);text-decoration:none;}
 <section id="build">
   <div class="build-inner">
     <div class="eyebrow">Our Solution</div>
-    <h2>A hierarchical planner, not a black box</h2>
-    <p class="lead">Physics-grounded search generates the candidate maneuvers. A coordination layer picks the joint solution. A safety filter guarantees it holds.</p>
+    <h2>A complete autonomy stack, not a black box</h2>
+    <p class="lead">Our proprietary planning engine generates the candidate maneuvers. An advanced coordination layer picks the joint solution. A safety filter guarantees it holds.</p>
     <div class="b-grid">
       <div class="b-card">
-        <div class="b-label">01 — Candidate Generation</div>
-        <h3>A* search over safe maneuvers</h3>
-        <p>Orbital dynamics and collision risk are encoded directly into the search. Each satellite gets a diverse set of low-cost, low-risk trajectory candidates — structured and auditable, not a black box.</p>
+        <div class="b-label">01 — Intelligent Path Planning</div>
+        <h3>Physics-grounded maneuver generation</h3>
+        <p>Our proprietary planning engine generates safe, low-cost trajectory options for each satellite. Physical orbital dynamics are encoded directly into the search, ensuring every candidate maneuver is efficient, physically realistic, and fully auditable.</p>
       </div>
       <div class="b-card">
-        <div class="b-label">02 — Joint Coordination</div>
+        <div class="b-label">02 — Joint Fleet Coordination</div>
         <h3>Optimize across the fleet, not per-satellite</h3>
-        <p>A centralized optimizer — moving to a learned multi-agent policy — selects one candidate per satellite to minimize total propellant while enforcing separation across every pair in conflict.</p>
+        <p>A sophisticated decision layer selects the optimal joint maneuver across the fleet simultaneously. This prevents satellites from creating new conflicts with each other and minimizes total propellant consumption across the constellation.</p>
       </div>
       <div class="b-card">
-        <div class="b-label">03 — Safety Filter</div>
-        <h3>A hard guarantee, shaped by training</h3>
-        <p>Every joint maneuver is checked against minimum-separation constraints before execution — a hard override at runtime. During training, the same filter penalizes the policy for needing it, so the learned layer relies on it less over time.</p>
+        <div class="b-label">03 — Hard Safety Guarantee</div>
+        <h3>A deterministic check before execution</h3>
+        <p>Every proposed joint maneuver is checked against hard separation constraints before it is ever sent to the spacecraft. This provides a mathematical guarantee of safety — not a statistical suggestion — ensuring full certifiability.</p>
       </div>
       <div class="b-card">
-        <div class="b-label">04 — Frame Architecture</div>
+        <div class="b-label">04 — Hybrid Planning Architecture</div>
         <h3>Realistic globally, tractable locally</h3>
-        <p>Full orbit propagation and conjunction screening run in ECI for physical realism; planning happens in each satellite's local LVLH frame, where the relative-motion problem is small enough to search efficiently.</p>
+        <p>Full orbit propagation and conjunction screening run in global coordinates for physical realism, while local relative-motion planning operates in a satellite-centric frame, keeping the problem scalable for large constellations.</p>
       </div>
     </div>
   </div>
@@ -299,7 +299,7 @@ footer a{color:var(--green);text-decoration:none;}
   <div class="demo-inner">
     <div class="eyebrow">Demo</div>
     <h2>See the planner and coordination layer run</h2>
-    <p class="lead">Prototype walkthrough: A* candidate generation, conjunction screening, and the coordination layer resolving a multi-satellite encounter.</p>
+    <p class="lead">Prototype walkthrough: advanced path generation, conjunction screening, and the coordination layer resolving a multi-satellite encounter.</p>
     <div class="video-frame">
       <!-- Replace VIDEO_ID with your YouTube video ID, e.g. https://youtu.be/VIDEO_ID -->
       <iframe src="https://www.youtube.com/embed/-KxNMVCNC18" title="OrbitFlow Dynamics Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -320,11 +320,11 @@ footer a{color:var(--green);text-decoration:none;}
     </div>
     <div class="d-row">
       <div class="d-cell"><span class="d-tag">Maneuver Generation</span><p>Manual, or left entirely to the customer's flight dynamics team.</p></div>
-      <div class="d-cell"><span class="d-tag">Maneuver Generation</span><p>Automated, low-cost detours via A* search in the LVLH frame.</p></div>
+      <div class="d-cell"><span class="d-tag">Maneuver Generation</span><p>Automated, optimized low-cost detours via proprietary planning.</p></div>
     </div>
     <div class="d-row">
       <div class="d-cell"><span class="d-tag">Fleet Coordination</span><p>None — isolated, satellite-by-satellite decision-making.</p></div>
-      <div class="d-cell"><span class="d-tag">Fleet Coordination</span><p>Multi-agent (MARL) joint-action coordination across an encounter.</p></div>
+      <div class="d-cell"><span class="d-tag">Fleet Coordination</span><p>Fleet-wide coordinated optimization across the encounter.</p></div>
     </div>
     <div class="d-row">
       <div class="d-cell"><span class="d-tag">Propellant Savings</span><p>Low — standardized, heavy, unoptimized burns.</p></div>
@@ -336,7 +336,7 @@ footer a{color:var(--green);text-decoration:none;}
     </div>
     <div class="d-row">
       <div class="d-cell"><span class="d-tag">Safety Assurance</span><p>Statistical, probabilistic collision-probability warnings.</p></div>
-      <div class="d-cell"><span class="d-tag">Safety Assurance</span><p>A hard, deterministic safety shield plus an audit log.</p></div>
+      <div class="d-cell"><span class="d-tag">Safety Assurance</span><p>A hard, deterministic safety shield with an audit log.</p></div>
     </div>
   </div>
 </section>
@@ -418,7 +418,7 @@ footer a{color:var(--green);text-decoration:none;}
       <ul class="leop-list">
         <li>High-covariance screening and pathing throughout continuous low-thrust orbit raising.</li>
         <li>Safe navigation for newly deployed clusters during de-tumbling and separation, before catalog IDs are fully settled by space-track agencies.</li>
-        <li>The same A* + coordination + safety-filter stack used for station-keeping, applied to the highest-uncertainty phase of the mission.</li>
+        <li>The same intelligent planning, coordination, and safety stack used for station-keeping, applied to the highest-uncertainty phase of the mission.</li>
       </ul>
     </div>
   </div>
@@ -462,22 +462,22 @@ footer a{color:var(--green);text-decoration:none;}
   <div class="model-inner">
     <div class="eyebrow">Roadmap & The Ask</div>
     <h2>From working prototype<br>to validated multi-satellite demo</h2>
-    <p class="lead">ECI propagation, two-stage conjunction screening, verified ECI–LVLH frame transforms, and an A* candidate generator already run end-to-end on synthetic scenarios.</p>
+    <p class="lead">Full orbit propagation, two-stage conjunction screening, verified frame transforms, and the intelligent path planner already run end-to-end on synthetic scenarios.</p>
     <div class="phase-row">
       <div class="phase">
         <div class="phase-node">1</div>
-        <h3>Centralized Optimizer</h3>
-        <p>Coordination layer on top of the existing A* generator — a fast, working multi-satellite baseline.</p>
+        <h3>Coordination Integration</h3>
+        <p>Coordination layer integrated with the path planner — a fast, working multi-satellite baseline.</p>
       </div>
       <div class="phase">
         <div class="phase-node">2</div>
-        <h3>MARL Coordination</h3>
-        <p>Centralized-training, decentralized-execution policy trained against the optimizer baseline.</p>
+        <h3>Autonomous Coordination</h3>
+        <p>Advanced decentralized coordination logic developed and benchmarked against operational baselines.</p>
       </div>
       <div class="phase">
         <div class="phase-node">3</div>
         <h3>Validated Demo</h3>
-        <p>Multi-satellite avoidance demonstrated against decentralized-greedy and optimizer-only baselines.</p>
+        <p>Multi-satellite avoidance demonstrated against decentralized-greedy and baseline-only approaches.</p>
       </div>
       <div class="phase">
         <div class="phase-node">4</div>
