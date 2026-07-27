@@ -78,6 +78,17 @@ h2{font-size:clamp(1.7rem,3.2vw,2.5rem);font-weight:700;color:var(--white);lette
 .p-card p{font-size:.87rem;color:var(--grey);line-height:1.65;}
 .p-stat{margin-top:2.5rem;background:rgba(255,122,80,.07);border:1px solid rgba(255,122,80,.22);border-radius:6px;padding:1.25rem 1.75rem;font-size:.94rem;color:var(--amber);font-weight:500;line-height:1.6;}
 
+/* EVENT DETECTION (NEW) */
+#detection{padding:6rem 3rem;background:var(--navy);}
+.detection-inner{max-width:1120px;margin:0 auto;}
+.detection-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2.5rem;}
+.detection-card{background:var(--mid);border-radius:8px;padding:2rem;border:1px solid rgba(61,220,151,.1);}
+.detection-card .b-label{font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--green);margin-bottom:.75rem;display:block;}
+.detection-card h3{font-size:1.05rem;font-weight:600;color:var(--white);margin-bottom:.6rem;}
+.detection-card p{font-size:.87rem;color:var(--grey);line-height:1.7;}
+.detection-highlight{margin-top:2.5rem;background:rgba(61,220,151,.06);border-left:3px solid var(--green);padding:1.5rem 2rem;border-radius:0 6px 6px 0;}
+.detection-highlight strong{color:var(--white);}
+
 /* BUILD / SOLUTION */
 #build{padding:6rem 3rem;background:linear-gradient(180deg,var(--dark) 0%,var(--navy) 50%,var(--dark) 100%);}
 .build-inner{max-width:1120px;margin:0 auto;}
@@ -183,8 +194,8 @@ footer a{color:var(--green);text-decoration:none;}
   nav ul{display:none;}
   .hero-inner{grid-template-columns:1fr;}
   .orbit-wrap{display:none;}
-  #problem,#build,#diff,#value,#leop,#why,#model,#team{padding:4rem 1.5rem;}
-  .p-grid,.b-grid,.stat-row,.team-grid,.phase-row,.d-row,.d-head,.why-text,.v-grid,.leop-flow,.leop-risk{grid-template-columns:1fr;}
+  #problem,#detection,#build,#diff,#value,#leop,#why,#model,#team{padding:4rem 1.5rem;}
+  .p-grid,.detection-grid,.b-grid,.stat-row,.team-grid,.phase-row,.d-row,.d-head,.why-text,.v-grid,.leop-flow,.leop-risk{grid-template-columns:1fr;}
   .phase-row::before{display:none;}
   .d-row .d-cell:first-child{border-right:none;border-bottom:1px solid rgba(61,220,151,.1);}
 }
@@ -202,6 +213,7 @@ footer a{color:var(--green);text-decoration:none;}
   </a>
   <ul>
     <li><a href="#problem">Problem</a></li>
+    <li><a href="#detection">Detection</a></li>
     <li><a href="#build">Solution</a></li>
     <li><a href="#diff">Why Us</a></li>
     <li><a href="#leop">LEOP</a></li>
@@ -219,10 +231,10 @@ footer a{color:var(--green);text-decoration:none;}
       <div class="hero-eyebrow">Structured Autopilot for Orbital Traffic</div>
       <h1>Not an alert.<br><em>An autopilot</em> for your constellation.</h1>
       <p class="hero-sub">
-        <strong>OrbitFlow Dynamics</strong> is the first true autopilot for satellite constellations. We don't just produce risk alerts — we <strong>plan, coordinate, and guarantee</strong> every maneuver across the entire fleet. We react to unknown objects in <strong>minutes (not days)</strong> and handle both <strong>cooperative fleet members and non‑cooperative targets</strong> (debris, silent spacecraft) with mathematical certainty.
+        <strong>OrbitFlow Dynamics</strong> is the first true autopilot for satellite constellations. We <strong>detect</strong> threats in seconds, <strong>plan</strong> optimal fleet‑wide responses, and <strong>guarantee</strong> safety before every burn — handling both cooperative fleet members and unknown non‑cooperative targets in minutes, not days.
       </p>
       <div class="cta-row">
-        <a href="#build" class="btn-p">See the Architecture</a>
+        <a href="#detection" class="btn-p">See the Detection Stack</a>
         <a href="mailto:hello@orbitflow-dynamics.com" class="btn-g">Request a Pilot</a>
       </div>
     </div>
@@ -241,7 +253,7 @@ footer a{color:var(--green);text-decoration:none;}
 <section id="problem">
   <div class="eyebrow">The Problem</div>
   <h2>Constellations are outgrowing alerts. Operators need an autopilot.</h2>
-  <p class="lead">Close-approach events scale with every satellite added to orbit. Legacy alert systems hand you a risk score and walk away — the planning, coordination, and execution are still left to your ground team.</p>
+  <p class="lead">Close-approach events scale with every satellite added to orbit. Legacy alert systems hand you a risk score and walk away — the detection, planning, and execution are still left to your ground team.</p>
   <div class="p-grid">
     <div class="p-card">
       <span class="p-icon">📋</span>
@@ -264,12 +276,46 @@ footer a{color:var(--green);text-decoration:none;}
   </div>
 </section>
 
+<!-- EVENT DETECTION & SCREENING (NEW) -->
+<section id="detection">
+  <div class="detection-inner">
+    <div class="eyebrow">Event Detection & Screening</div>
+    <h2>Detect threats in seconds — then act automatically</h2>
+    <p class="lead">We don't just wait for external CDMs. Our proprietary screening pipeline ingests raw sensor data (radar, optical, onboard) and runs a fast two‑stage filter to isolate high‑probability conjunctions in real time.</p>
+    <div class="detection-grid">
+      <div class="detection-card">
+        <span class="b-label">01 — Multi‑Source Ingestion</span>
+        <h3>Radar, optical, in‑situ — all in one stream</h3>
+        <p>We fuse data from ground‑based sensors, space‑based trackers, and your own satellite telemetry. No single point of failure, and no dependency on a single provider's catalog.</p>
+      </div>
+      <div class="detection-card">
+        <span class="b-label">02 — Two‑Stage Conjunction Screening</span>
+        <h3>Filter thousands down to the few that matter</h3>
+        <p>Our proprietary screening pipeline runs a coarse filter to discard non‑threatening passes, then applies a high‑fidelity propagation and uncertainty model to the remaining candidates. This gives us high confidence in seconds.</p>
+      </div>
+      <div class="detection-card">
+        <span class="b-label">03 — Unknown Object Tracklet Processing</span>
+        <h3>Detect fresh debris in minutes, not days</h3>
+        <p>For uncatalogued objects, our adaptive tracklet‑processing layer can ingest sparse observations and produce a usable threat assessment within minutes — without waiting for a full orbit to be built.</p>
+      </div>
+      <div class="detection-card">
+        <span class="b-label">04 — Direct Autopilot Hand‑Off</span>
+        <h3>Detection feeds straight into action</h3>
+        <p>Unlike legacy alert systems, our detection layer does not stop at a notification. It immediately hands the validated conjunction data to our planning and coordination stack, generating a guaranteed fleet‑wide response in seconds.</p>
+      </div>
+    </div>
+    <div class="detection-highlight">
+      <strong>💡 The OrbitFlow difference:</strong> We don't just detect — we <em>resolve</em>. Our event screening is the first step of a fully automated pipeline: detect → plan → coordinate → guarantee → execute. Legacy systems detect → alert → wait for a human → wait again for coordination.
+    </div>
+  </div>
+</section>
+
 <!-- BUILD / SOLUTION -->
 <section id="build">
   <div class="build-inner">
-    <div class="eyebrow">Our Solution</div>
-    <h2>A true autopilot, not a black-box alert</h2>
-    <p class="lead">We are an <strong>autopilot</strong>, not another warning light. Our proprietary stack plans efficient routes, coordinates the entire fleet, reacts to unknowns in minutes, and guarantees safety before every burn — for both cooperative and non‑cooperative targets.</p>
+    <div class="eyebrow">Autopilot Stack</div>
+    <h2>From detection to guaranteed execution — one seamless pipeline</h2>
+    <p class="lead">After we detect a threat, our proprietary stack takes over: intelligent path planning, fleet‑wide coordination, adaptive unknown‑object response, and a hard safety guarantee.</p>
     <div class="b-grid">
       <div class="b-card">
         <div class="b-label">01 — Intelligent Path Planning</div>
@@ -289,7 +335,7 @@ footer a{color:var(--green);text-decoration:none;}
       <div class="b-card">
         <div class="b-label">04 — Adaptive Unknown Object Response</div>
         <h3>React to fresh debris in minutes, not days</h3>
-        <p>While legacy systems wait 24–48 hours for a full tracking record, OrbitFlow reacts safely to unexpected objects — even fresh debris with no tracking history — within minutes. Our adaptive layer handles both cooperative fleet members and non‑cooperative targets with equal rigor.</p>
+        <p>When our screening pipeline flags an unknown object, our adaptive response layer immediately generates a safe coordinated plan — without waiting for a full tracking record. This is the difference between a close call and a collision.</p>
       </div>
     </div>
   </div>
@@ -300,7 +346,7 @@ footer a{color:var(--green);text-decoration:none;}
   <div class="demo-inner">
     <div class="eyebrow">Demo</div>
     <h2>See the autopilot in action</h2>
-    <p class="lead">Prototype walkthrough: intelligent path planning, fleet‑wide coordination, and adaptive response to unknown objects resolving a multi‑satellite encounter.</p>
+    <p class="lead">Prototype walkthrough: multi‑source ingestion, two‑stage screening, intelligent path planning, and fleet‑wide coordination resolving a multi‑satellite encounter.</p>
     <div class="video-frame">
       <!-- Replace VIDEO_ID with your YouTube video ID, e.g. https://youtu.be/VIDEO_ID -->
       <iframe src="https://www.youtube.com/embed/-KxNMVCNC18" title="OrbitFlow Dynamics Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -312,12 +358,20 @@ footer a{color:var(--green);text-decoration:none;}
 <section id="diff">
   <div class="eyebrow">Why Us</div>
   <h2>Legacy STM gives you alerts. OrbitFlow gives you an autopilot.</h2>
-  <p class="lead">LeoLabs, Slingshot Aerospace, COMSPOC, and the 18th SDS are alert engines — they hand you a risk score and walk away. We are a decision engine: we plan, coordinate, and guarantee the outcome.</p>
+  <p class="lead">LeoLabs, Slingshot Aerospace, COMSPOC, and the 18th SDS are alert engines — they hand you a risk score and walk away. We are a decision engine: we detect, plan, coordinate, and guarantee the outcome.</p>
   <div class="d-head"><span>Legacy SSA / STM Providers</span><span>OrbitFlow Dynamics (Autopilot)</span></div>
   <div class="d-table">
     <div class="d-row">
       <div class="d-cell"><span class="d-tag">Primary Function</span><p>Monitoring & alerting — conjunction data messages (CDMs).</p></div>
-      <div class="d-cell"><span class="d-tag">Primary Function</span><p>Full autopilot — plans, coordinates, and guarantees maneuvers.</p></div>
+      <div class="d-cell"><span class="d-tag">Primary Function</span><p>Full autopilot — detects, plans, coordinates, and guarantees maneuvers.</p></div>
+    </div>
+    <div class="d-row">
+      <div class="d-cell"><span class="d-tag">Event Detection</span><p>Relies on external CDMs or batch‑processed catalogs. Slow to ingest new data.</p></div>
+      <div class="d-cell"><span class="d-tag">Event Detection</span><p>Real‑time multi‑source ingestion + proprietary two‑stage screening. Threat assessment in seconds.</p></div>
+    </div>
+    <div class="d-row">
+      <div class="d-cell"><span class="d-tag">Unknown Object Processing</span><p>Waits 24–48 hours for tracking before acting.</p></div>
+      <div class="d-cell"><span class="d-tag">Unknown Object Processing</span><p>Processes sparse tracklets in minutes — generates a usable threat assessment and an immediate response.</p></div>
     </div>
     <div class="d-row">
       <div class="d-cell"><span class="d-tag">Maneuver Generation</span><p>Manual, or left entirely to the customer's flight dynamics team.</p></div>
@@ -326,10 +380,6 @@ footer a{color:var(--green);text-decoration:none;}
     <div class="d-row">
       <div class="d-cell"><span class="d-tag">Fleet Coordination</span><p>None — isolated, satellite‑by‑satellite decision‑making.</p></div>
       <div class="d-cell"><span class="d-tag">Fleet Coordination</span><p>Joint optimization across the entire fleet, cooperative & non‑cooperative.</p></div>
-    </div>
-    <div class="d-row">
-      <div class="d-cell"><span class="d-tag">Unknown Objects</span><p>Waits 24–48 hours for tracking before acting.</p></div>
-      <div class="d-cell"><span class="d-tag">Unknown Objects</span><p>Reacts safely within minutes to fresh debris/unknowns.</p></div>
     </div>
     <div class="d-row">
       <div class="d-cell"><span class="d-tag">Safety Assurance</span><p>Statistical, probabilistic collision‑probability warnings.</p></div>
@@ -347,7 +397,7 @@ footer a{color:var(--green);text-decoration:none;}
   <div class="value-inner">
     <div class="eyebrow">Operator Value Proposition</div>
     <h2>Why satellite operators choose OrbitFlow</h2>
-    <p class="lead">This isn't a nice‑to‑have. It's fuel, staffing, safety, unknown‑object readiness, and compliance — the five things that determine whether a constellation is profitable to run.</p>
+    <p class="lead">This isn't a nice‑to‑have. It's fuel, staffing, unknown‑object readiness, safety, and compliance — the five things that determine whether a constellation is profitable to run.</p>
     <div class="v-grid">
       <div class="v-card">
         <div class="v-num">01 · FUEL = MONEY</div>
@@ -357,12 +407,12 @@ footer a{color:var(--green);text-decoration:none;}
       <div class="v-card">
         <div class="v-num">02 · 10x GROWTH, 1x STAFF</div>
         <h3>Operational scalability</h3>
-        <p>Close‑approach events scale roughly quadratically with fleet size. No operator can hire enough engineers to hand‑review thousands of daily alerts — OrbitFlow automates the routine 95%+ of screening, planning, and execution.</p>
+        <p>Close‑approach events scale roughly quadratically with fleet size. No operator can hire enough engineers to hand‑review thousands of daily detections — OrbitFlow automates the routine 95%+ of screening, planning, and execution.</p>
       </div>
       <div class="v-card">
         <div class="v-num">03 · UNKNOWN OBJECTS</div>
         <h3>Minutes, not days</h3>
-        <p>Fresh debris appears without warning. Legacy systems wait for a track to build. OrbitFlow's adaptive response layer reacts within minutes — giving your fleet the best chance to avoid an unfolding threat.</p>
+        <p>Fresh debris appears without warning. Legacy systems wait for a track to build. OrbitFlow's adaptive detection and response layer reacts within minutes — giving your fleet the best chance to avoid an unfolding threat.</p>
       </div>
       <div class="v-card">
         <div class="v-num">04 · CERTIFIABLE AUTONOMY</div>
@@ -418,9 +468,9 @@ footer a{color:var(--green);text-decoration:none;}
     <div class="leop-col value">
       <h3>How OrbitFlow helps</h3>
       <ul class="leop-list">
-        <li>High‑covariance screening and pathing throughout continuous low‑thrust orbit raising.</li>
+        <li>Real‑time multi‑source screening and pathing throughout continuous low‑thrust orbit raising.</li>
         <li>Safe navigation for newly deployed clusters during de‑tumbling and separation, before catalog IDs are fully settled.</li>
-        <li>Minutes‑not‑days response to unknown debris that may appear in the vicinity.</li>
+        <li>Minutes‑not‑days detection and response to unknown debris that may appear in the vicinity.</li>
         <li>The same autopilot stack used for station‑keeping, applied to the highest‑uncertainty phase of the mission.</li>
       </ul>
     </div>
@@ -439,7 +489,7 @@ footer a{color:var(--green);text-decoration:none;}
     </div>
     <div class="stat-card">
       <div class="stat-val">~2</div>
-      <div class="stat-label">Actionable conjunction alerts per satellite, per week, needing analyst follow‑up</div>
+      <div class="stat-label">Actionable conjunction detections per satellite, per week, needing analyst follow‑up</div>
       <span class="stat-src">ESA Collision Avoidance Challenge</span>
     </div>
     <div class="stat-card">
@@ -450,12 +500,12 @@ footer a{color:var(--green);text-decoration:none;}
   </div>
   <div class="why-text">
     <p>
-      Conjunction alerts are now a standing operational cost for every constellation operator. But alerts are not solutions. As maneuver volume climbs toward one million per year, independent per‑satellite avoidance stops being merely inefficient and starts actively working against itself. Operators no longer need another alert system — they need an <strong>autopilot</strong> that plans, coordinates, and guarantees the fleet's response.
+      Conjunction detection is now a standing operational cost for every constellation operator. But detections are not solutions. As maneuver volume climbs toward one million per year, independent per‑satellite avoidance stops being merely inefficient and starts actively working against itself. Operators no longer need another detection engine — they need an <strong>autopilot</strong> that detects, plans, coordinates, and guarantees the fleet's response in one seamless pipeline.
       <br><br>
       Target customers: LEO constellation operators, SSA providers looking to extend beyond screening into autonomous maneuver planning, and satellite insurers who need an auditable safety case.
     </p>
     <div class="why-quote">
-      "The hard part isn't spotting the conjunction. It's deciding what every satellite involved should do about it — together, instantly, and with a guarantee."
+      "The hard part isn't spotting the conjunction. It's detecting it instantly, deciding what every satellite involved should do about it — together, and guaranteeing it's safe."
     </div>
   </div>
 </section>
@@ -465,22 +515,22 @@ footer a{color:var(--green);text-decoration:none;}
   <div class="model-inner">
     <div class="eyebrow">Roadmap & The Ask</div>
     <h2>From working prototype<br>to validated multi‑satellite autopilot demo</h2>
-    <p class="lead">Full orbit propagation, two‑stage conjunction screening, verified frame transforms, and the intelligent path planner already run end‑to‑end on synthetic scenarios — including adaptive responses to simulated unknown objects.</p>
+    <p class="lead">Full orbit propagation, two‑stage conjunction screening, verified frame transforms, and the intelligent path planner already run end‑to‑end on synthetic scenarios — including adaptive detection and response to simulated unknown objects.</p>
     <div class="phase-row">
       <div class="phase">
         <div class="phase-node">1</div>
-        <h3>Coordination Integration</h3>
-        <p>Coordination layer integrated with the path planner — a fast, working multi‑satellite baseline.</p>
+        <h3>Detection & Screening</h3>
+        <p>Multi‑source ingestion and two‑stage screening integrated with the planning stack.</p>
       </div>
       <div class="phase">
         <div class="phase-node">2</div>
         <h3>Adaptive Response Layer</h3>
-        <p>Unknown‑object detection and minutes‑not‑days reaction logic developed and benchmarked.</p>
+        <p>Unknown‑object tracklet processing and minutes‑not‑days reaction logic developed and benchmarked.</p>
       </div>
       <div class="phase">
         <div class="phase-node">3</div>
         <h3>Validated Demo</h3>
-        <p>Multi‑satellite avoidance and unknown‑object response demonstrated against realistic scenarios.</p>
+        <p>End‑to‑end autopilot demo: detection → planning → coordination → guarantee, demonstrated against realistic scenarios.</p>
       </div>
       <div class="phase">
         <div class="phase-node">4</div>
