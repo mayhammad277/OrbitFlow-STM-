@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>OrbitFlow Dynamics — Structured Autonomy for Constellation Collision Avoidance</title>
+<title>OrbitFlow Dynamics — Autopilot for Constellation Collision Avoidance</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
 <style>
 :root {
@@ -42,7 +42,8 @@ nav ul a:hover{color:var(--green);}
 .hero-eyebrow::before{content:'';width:2rem;height:1px;background:var(--green);}
 h1{font-size:clamp(2.4rem,4.6vw,4.4rem);font-weight:700;line-height:1.06;color:var(--white);letter-spacing:-.02em;margin-bottom:1.5rem;}
 h1 em{color:var(--green);font-style:normal;}
-.hero-sub{font-size:1.08rem;color:var(--light);line-height:1.75;margin-bottom:2.5rem;max-width:490px;}
+.hero-sub{font-size:1.08rem;color:var(--light);line-height:1.75;margin-bottom:2.5rem;max-width:520px;}
+.hero-sub strong{color:var(--white);}
 .cta-row{display:flex;gap:1rem;flex-wrap:wrap;}
 .btn-p{background:var(--green);color:var(--dark);padding:.8rem 2rem;border-radius:4px;font-weight:700;font-size:.86rem;text-decoration:none;letter-spacing:.05em;transition:opacity .2s,transform .2s;}
 .btn-p:hover{opacity:.85;transform:translateY(-1px);}
@@ -215,10 +216,10 @@ footer a{color:var(--green);text-decoration:none;}
 <section id="hero">
   <div class="hero-inner">
     <div>
-      <div class="hero-eyebrow">Structured Autonomy for Orbital Traffic</div>
-      <h1>Don't just dodge.<br><em>Coordinate</em> the swarm.</h1>
+      <div class="hero-eyebrow">Structured Autopilot for Orbital Traffic</div>
+      <h1>Not an alert.<br><em>An autopilot</em> for your constellation.</h1>
       <p class="hero-sub">
-        OrbitFlow Dynamics plans and coordinates collision-avoidance maneuvers across entire constellations — combining intelligent path planning, fleet-wide coordination, and hard safety guarantees, instead of one satellite dodging blind.
+        <strong>OrbitFlow Dynamics</strong> is the first true autopilot for satellite constellations. We don't just produce risk alerts — we <strong>plan, coordinate, and guarantee</strong> every maneuver across the entire fleet. We react to unknown objects in <strong>minutes (not days)</strong> and handle both <strong>cooperative fleet members and non‑cooperative targets</strong> (debris, silent spacecraft) with mathematical certainty.
       </p>
       <div class="cta-row">
         <a href="#build" class="btn-p">See the Architecture</a>
@@ -239,13 +240,13 @@ footer a{color:var(--green);text-decoration:none;}
 <!-- PROBLEM -->
 <section id="problem">
   <div class="eyebrow">The Problem</div>
-  <h2>Constellations are outgrowing manual, one-satellite-at-a-time avoidance</h2>
-  <p class="lead">Close-approach events scale with every satellite added to orbit. The tools operators lean on today weren't built for fleets in the thousands.</p>
+  <h2>Constellations are outgrowing alerts. Operators need an autopilot.</h2>
+  <p class="lead">Close-approach events scale with every satellite added to orbit. Legacy alert systems hand you a risk score and walk away — the planning, coordination, and execution are still left to your ground team.</p>
   <div class="p-grid">
     <div class="p-card">
       <span class="p-icon">📋</span>
-      <h3>Manual review doesn't scale</h3>
-      <p>Analysts triage conjunction alerts and plan maneuvers largely by hand — workable at dozens of satellites, untenable at thousands.</p>
+      <h3>Alerts don't solve the problem</h3>
+      <p>Legacy providers stop at the conjunction alert. They tell you something might hit — but they don't tell you what to do about it. The maneuver plan is still your job.</p>
     </div>
     <div class="p-card">
       <span class="p-icon">🔀</span>
@@ -253,13 +254,13 @@ footer a{color:var(--green);text-decoration:none;}
       <p>When each satellite dodges on its own, fleets burn more propellant than necessary and can create new conflicts while resolving old ones.</p>
     </div>
     <div class="p-card">
-      <span class="p-icon">⬛</span>
-      <h3>Black-box policies can't be certified</h3>
-      <p>End-to-end learned avoidance is hard to explain to regulators and insurers — exactly the audience that needs to sign off on it.</p>
+      <span class="p-icon">⏳</span>
+      <h3>Unknown objects take days to resolve</h3>
+      <p>Traditional systems wait 24–48 hours for a full tracking record before acting. In a dense LEO environment, that delay is a luxury you cannot afford.</p>
     </div>
   </div>
   <div class="p-stat">
-    🛰️ &nbsp;SpaceX alone reported roughly 300,000 collision-avoidance maneuvers to the FCC in 2025 — up about 50% year-over-year, and on pace to approach a million a year by 2027 as constellations keep growing.
+    🛰️ &nbsp;SpaceX alone reported roughly 300,000 collision-avoidance maneuvers to the FCC in 2025 — up about 50% year-over-year, and on pace to approach a million a year by 2027. Alerts are not enough; you need an autopilot.
   </div>
 </section>
 
@@ -267,28 +268,28 @@ footer a{color:var(--green);text-decoration:none;}
 <section id="build">
   <div class="build-inner">
     <div class="eyebrow">Our Solution</div>
-    <h2>A complete autonomy stack, not a black box</h2>
-    <p class="lead">Our proprietary planning engine generates the candidate maneuvers. An advanced coordination layer picks the joint solution. A safety filter guarantees it holds.</p>
+    <h2>A true autopilot, not a black-box alert</h2>
+    <p class="lead">We are an <strong>autopilot</strong>, not another warning light. Our proprietary stack plans efficient routes, coordinates the entire fleet, reacts to unknowns in minutes, and guarantees safety before every burn — for both cooperative and non‑cooperative targets.</p>
     <div class="b-grid">
       <div class="b-card">
         <div class="b-label">01 — Intelligent Path Planning</div>
-        <h3>Physics-grounded maneuver generation</h3>
-        <p>Our proprietary planning engine generates safe, low-cost trajectory options for each satellite. Physical orbital dynamics are encoded directly into the search, ensuring every candidate maneuver is efficient, physically realistic, and fully auditable.</p>
+        <h3>Physics‑grounded, auditable maneuver generation</h3>
+        <p>Our proprietary planning engine generates safe, low‑fuel trajectory options for each satellite. Every candidate is physically realistic and fully explainable — no black box, full regulatory auditability.</p>
       </div>
       <div class="b-card">
         <div class="b-label">02 — Joint Fleet Coordination</div>
-        <h3>Optimize across the fleet, not per-satellite</h3>
-        <p>A sophisticated decision layer selects the optimal joint maneuver across the fleet simultaneously. This prevents satellites from creating new conflicts with each other and minimizes total propellant consumption across the constellation.</p>
+        <h3>Cooperative & non‑cooperative, handled together</h3>
+        <p>A sophisticated decision layer selects optimal joint maneuvers across the fleet. For cooperative operators, we share intent and de‑conflict jointly. For non‑cooperative targets (debris, silent satellites), our adaptive layer responds safely without requiring their cooperation.</p>
       </div>
       <div class="b-card">
         <div class="b-label">03 — Hard Safety Guarantee</div>
         <h3>A deterministic check before execution</h3>
-        <p>Every proposed joint maneuver is checked against hard separation constraints before it is ever sent to the spacecraft. This provides a mathematical guarantee of safety — not a statistical suggestion — ensuring full certifiability.</p>
+        <p>Every proposed maneuver is checked against hard separation constraints before it is ever sent to the spacecraft. This provides a mathematical guarantee of safety — not a statistical suggestion — making the system certifiable and insurable.</p>
       </div>
       <div class="b-card">
-        <div class="b-label">04 — Hybrid Planning Architecture</div>
-        <h3>Realistic globally, tractable locally</h3>
-        <p>Full orbit propagation and conjunction screening run in global coordinates for physical realism, while local relative-motion planning operates in a satellite-centric frame, keeping the problem scalable for large constellations.</p>
+        <div class="b-label">04 — Adaptive Unknown Object Response</div>
+        <h3>React to fresh debris in minutes, not days</h3>
+        <p>While legacy systems wait 24–48 hours for a full tracking record, OrbitFlow reacts safely to unexpected objects — even fresh debris with no tracking history — within minutes. Our adaptive layer handles both cooperative fleet members and non‑cooperative targets with equal rigor.</p>
       </div>
     </div>
   </div>
@@ -298,8 +299,8 @@ footer a{color:var(--green);text-decoration:none;}
 <section id="demo">
   <div class="demo-inner">
     <div class="eyebrow">Demo</div>
-    <h2>See the planner and coordination layer run</h2>
-    <p class="lead">Prototype walkthrough: advanced path generation, conjunction screening, and the coordination layer resolving a multi-satellite encounter.</p>
+    <h2>See the autopilot in action</h2>
+    <p class="lead">Prototype walkthrough: intelligent path planning, fleet‑wide coordination, and adaptive response to unknown objects resolving a multi‑satellite encounter.</p>
     <div class="video-frame">
       <!-- Replace VIDEO_ID with your YouTube video ID, e.g. https://youtu.be/VIDEO_ID -->
       <iframe src="https://www.youtube.com/embed/-KxNMVCNC18" title="OrbitFlow Dynamics Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -310,33 +311,33 @@ footer a{color:var(--green);text-decoration:none;}
 <!-- DIFFERENTIATION -->
 <section id="diff">
   <div class="eyebrow">Why Us</div>
-  <h2>Most STM players stop at the alert. We coordinate the fleet.</h2>
-  <p class="lead">LeoLabs, Slingshot Aerospace, COMSPOC, and the US Space Force's 18th SDS are alert engines, not decision engines — they answer "is a satellite going to hit something?" and hand the operator raw conjunction data. The maneuver planning, fuel trade-offs, and coordination are still left to the operator's ground team.</p>
-  <div class="d-head"><span>Legacy SSA / STM Providers</span><span>OrbitFlow Dynamics</span></div>
+  <h2>Legacy STM gives you alerts. OrbitFlow gives you an autopilot.</h2>
+  <p class="lead">LeoLabs, Slingshot Aerospace, COMSPOC, and the 18th SDS are alert engines — they hand you a risk score and walk away. We are a decision engine: we plan, coordinate, and guarantee the outcome.</p>
+  <div class="d-head"><span>Legacy SSA / STM Providers</span><span>OrbitFlow Dynamics (Autopilot)</span></div>
   <div class="d-table">
     <div class="d-row">
       <div class="d-cell"><span class="d-tag">Primary Function</span><p>Monitoring & alerting — conjunction data messages (CDMs).</p></div>
-      <div class="d-cell"><span class="d-tag">Primary Function</span><p>Autonomous guidance & trajectory optimization.</p></div>
+      <div class="d-cell"><span class="d-tag">Primary Function</span><p>Full autopilot — plans, coordinates, and guarantees maneuvers.</p></div>
     </div>
     <div class="d-row">
       <div class="d-cell"><span class="d-tag">Maneuver Generation</span><p>Manual, or left entirely to the customer's flight dynamics team.</p></div>
-      <div class="d-cell"><span class="d-tag">Maneuver Generation</span><p>Automated, optimized low-cost detours via proprietary planning.</p></div>
+      <div class="d-cell"><span class="d-tag">Maneuver Generation</span><p>Automated, optimized low‑cost detours via proprietary planning.</p></div>
     </div>
     <div class="d-row">
-      <div class="d-cell"><span class="d-tag">Fleet Coordination</span><p>None — isolated, satellite-by-satellite decision-making.</p></div>
-      <div class="d-cell"><span class="d-tag">Fleet Coordination</span><p>Fleet-wide coordinated optimization across the encounter.</p></div>
+      <div class="d-cell"><span class="d-tag">Fleet Coordination</span><p>None — isolated, satellite‑by‑satellite decision‑making.</p></div>
+      <div class="d-cell"><span class="d-tag">Fleet Coordination</span><p>Joint optimization across the entire fleet, cooperative & non‑cooperative.</p></div>
     </div>
     <div class="d-row">
-      <div class="d-cell"><span class="d-tag">Propellant Savings</span><p>Low — standardized, heavy, unoptimized burns.</p></div>
-      <div class="d-cell"><span class="d-tag">Propellant Savings</span><p>High — calculates the minimum required ΔV for each detour.</p></div>
+      <div class="d-cell"><span class="d-tag">Unknown Objects</span><p>Waits 24–48 hours for tracking before acting.</p></div>
+      <div class="d-cell"><span class="d-tag">Unknown Objects</span><p>Reacts safely within minutes to fresh debris/unknowns.</p></div>
     </div>
     <div class="d-row">
-      <div class="d-cell"><span class="d-tag">Operator Overhead</span><p>High — requires a large flight dynamics team to act on alerts.</p></div>
-      <div class="d-cell"><span class="d-tag">Operator Overhead</span><p>Low — automated, end-to-end workflow from alert to executed maneuver.</p></div>
-    </div>
-    <div class="d-row">
-      <div class="d-cell"><span class="d-tag">Safety Assurance</span><p>Statistical, probabilistic collision-probability warnings.</p></div>
+      <div class="d-cell"><span class="d-tag">Safety Assurance</span><p>Statistical, probabilistic collision‑probability warnings.</p></div>
       <div class="d-cell"><span class="d-tag">Safety Assurance</span><p>A hard, deterministic safety shield with an audit log.</p></div>
+    </div>
+    <div class="d-row">
+      <div class="d-cell"><span class="d-tag">Outcome</span><p>Risk alerts & recommendations — human decides.</p></div>
+      <div class="d-cell"><span class="d-tag">Outcome</span><p>Full autopilot — executes the optimal, guaranteed maneuver.</p></div>
     </div>
   </div>
 </section>
@@ -346,27 +347,27 @@ footer a{color:var(--green);text-decoration:none;}
   <div class="value-inner">
     <div class="eyebrow">Operator Value Proposition</div>
     <h2>Why satellite operators choose OrbitFlow</h2>
-    <p class="lead">This isn't a nice-to-have. It's fuel, staffing, safety, and compliance — the four things that determine whether a constellation is profitable to run.</p>
+    <p class="lead">This isn't a nice‑to‑have. It's fuel, staffing, safety, unknown‑object readiness, and compliance — the five things that determine whether a constellation is profitable to run.</p>
     <div class="v-grid">
       <div class="v-card">
         <div class="v-num">01 · FUEL = MONEY</div>
-        <h3>Direct bottom-line ROI</h3>
-        <p>Every unnecessary or oversized avoidance burn shortens a satellite's revenue-generating lifespan. Finding the mathematical minimum ΔV detour preserves months to years of extra station-keeping capability.</p>
+        <h3>Direct bottom‑line ROI</h3>
+        <p>Every unnecessary or oversized avoidance burn shortens a satellite's revenue‑generating lifespan. Finding the mathematical minimum ΔV detour preserves months to years of extra station‑keeping capability.</p>
       </div>
       <div class="v-card">
         <div class="v-num">02 · 10x GROWTH, 1x STAFF</div>
         <h3>Operational scalability</h3>
-        <p>Close-approach events scale roughly quadratically with fleet size. No operator can hire enough flight dynamics engineers to hand-review thousands of daily CDMs — OrbitFlow automates the routine 95%+ of screening and planning.</p>
+        <p>Close‑approach events scale roughly quadratically with fleet size. No operator can hire enough engineers to hand‑review thousands of daily alerts — OrbitFlow automates the routine 95%+ of screening, planning, and execution.</p>
       </div>
       <div class="v-card">
-        <div class="v-num">03 · SHARED SHELLS</div>
-        <h3>No more dodging into each other</h3>
-        <p>In dense shells like 500–600 km LEO, fleets from different operators routinely interact. Joint coordination resolves multi-satellite encounters holistically, eliminating contradictory, independently-chosen maneuvers.</p>
+        <div class="v-num">03 · UNKNOWN OBJECTS</div>
+        <h3>Minutes, not days</h3>
+        <p>Fresh debris appears without warning. Legacy systems wait for a track to build. OrbitFlow's adaptive response layer reacts within minutes — giving your fleet the best chance to avoid an unfolding threat.</p>
       </div>
       <div class="v-card">
-        <div class="v-num">04 · CERTIFIABLE AI</div>
+        <div class="v-num">04 · CERTIFIABLE AUTONOMY</div>
         <h3>Regulatory & insurance compliance</h3>
-        <p>Insurers and regulators (FCC, FAA, EU Space Strategy) are demanding stricter avoidance plans. A deterministic safety filter that guarantees minimum-distance clearance gives insurers the auditability they require.</p>
+        <p>Insurers and regulators (FCC, FAA, EU Space Strategy) are demanding stricter, auditable avoidance plans. Our deterministic safety filter provides the mathematical proof they require.</p>
       </div>
     </div>
   </div>
@@ -374,13 +375,13 @@ footer a{color:var(--green);text-decoration:none;}
 
 <!-- LEOP -->
 <section id="leop">
-  <div class="eyebrow">Beyond Station-Keeping</div>
+  <div class="eyebrow">Beyond Station‑Keeping</div>
   <h2>Coordination matters most in the first 72 hours: LEOP</h2>
-  <p class="lead">The Launch and Early Orbit Phase is the highest-risk window in a satellite's life — beginning at separation from the rocket and lasting until the satellite reaches its operational orbit and passes initial testing.</p>
+  <p class="lead">The Launch and Early Orbit Phase is the highest‑risk window in a satellite's life — beginning at separation from the rocket and lasting until the satellite reaches its operational orbit and passes initial testing.</p>
   <div class="leop-flow">
     <div class="leop-step">
       <div class="leop-step-num">STEP 1</div>
-      <h4>Separation & De-Tumbling</h4>
+      <h4>Separation & De‑Tumbling</h4>
       <p>The satellite detaches and tumbles chaotically; ADCS fires magnetorquers or reaction wheels to stabilize it.</p>
     </div>
     <div class="leop-step">
@@ -400,25 +401,27 @@ footer a{color:var(--green);text-decoration:none;}
     </div>
     <div class="leop-step">
       <div class="leop-step-num">STEP 5</div>
-      <h4>In-Orbit Commissioning</h4>
-      <p>Payloads and cross-links are calibrated before the satellite transitions to normal operations.</p>
+      <h4>In‑Orbit Commissioning</h4>
+      <p>Payloads and cross‑links are calibrated before the satellite transitions to normal operations.</p>
     </div>
   </div>
   <div class="leop-risk">
     <div class="leop-col risks">
       <h3>Why LEOP is extreme risk</h3>
       <ul class="leop-list">
-        <li>Extreme conjunction density: dozens of satellites drift closely together with large positional-uncertainty ellipsoids right after deployment.</li>
-        <li>Uncalibrated thrusters: maneuver execution errors are higher before in-space thruster calibration is complete.</li>
+        <li>Extreme conjunction density: dozens of satellites drift closely together with large positional‑uncertainty ellipsoids right after deployment.</li>
+        <li>Uncalibrated thrusters: maneuver execution errors are higher before in‑space thruster calibration is complete.</li>
         <li>Crossing crowded shells: a newly deployed satellite must cut through existing constellations, like Starlink or OneWeb, as it raises orbit.</li>
+        <li>Unknown objects: fresh debris from the launch or other breakups can appear without warning.</li>
       </ul>
     </div>
     <div class="leop-col value">
       <h3>How OrbitFlow helps</h3>
       <ul class="leop-list">
-        <li>High-covariance screening and pathing throughout continuous low-thrust orbit raising.</li>
-        <li>Safe navigation for newly deployed clusters during de-tumbling and separation, before catalog IDs are fully settled by space-track agencies.</li>
-        <li>The same intelligent planning, coordination, and safety stack used for station-keeping, applied to the highest-uncertainty phase of the mission.</li>
+        <li>High‑covariance screening and pathing throughout continuous low‑thrust orbit raising.</li>
+        <li>Safe navigation for newly deployed clusters during de‑tumbling and separation, before catalog IDs are fully settled.</li>
+        <li>Minutes‑not‑days response to unknown debris that may appear in the vicinity.</li>
+        <li>The same autopilot stack used for station‑keeping, applied to the highest‑uncertainty phase of the mission.</li>
       </ul>
     </div>
   </div>
@@ -427,32 +430,32 @@ footer a{color:var(--green);text-decoration:none;}
 <!-- MARKET -->
 <section id="why">
   <div class="eyebrow">Market Opportunity</div>
-  <h2>Avoidance is already routine.<br>Coordination isn't — yet.</h2>
+  <h2>Avoidance is routine.<br>Autopilots aren't — yet.</h2>
   <div class="stat-row">
     <div class="stat-card">
       <div class="stat-val">~30</div>
-      <div class="stat-label">Avoidance maneuvers per satellite per year, fleet-wide average at scale</div>
+      <div class="stat-label">Avoidance maneuvers per satellite per year, fleet‑wide average at scale</div>
       <span class="stat-src">SpaceX FCC filings, 2025</span>
     </div>
     <div class="stat-card">
       <div class="stat-val">~2</div>
-      <div class="stat-label">Actionable conjunction alerts per satellite, per week, needing analyst follow-up</div>
+      <div class="stat-label">Actionable conjunction alerts per satellite, per week, needing analyst follow‑up</div>
       <span class="stat-src">ESA Collision Avoidance Challenge</span>
     </div>
     <div class="stat-card">
       <div class="stat-val">1M</div>
-      <div class="stat-label">Projected annual maneuvers across just one mega-constellation by 2027</div>
+      <div class="stat-label">Projected annual maneuvers across just one mega‑constellation by 2027</div>
       <span class="stat-src">KeepTrack, 2026 estimate</span>
     </div>
   </div>
   <div class="why-text">
     <p>
-      Conjunction assessment and collision avoidance are now a standing operational cost for every constellation operator, and a growing concern for insurers, regulators, and space-traffic-management authorities as orbital congestion rises. As maneuver volume climbs toward the scale above, independent per-satellite avoidance stops being merely inefficient and starts actively working against itself.
+      Conjunction alerts are now a standing operational cost for every constellation operator. But alerts are not solutions. As maneuver volume climbs toward one million per year, independent per‑satellite avoidance stops being merely inefficient and starts actively working against itself. Operators no longer need another alert system — they need an <strong>autopilot</strong> that plans, coordinates, and guarantees the fleet's response.
       <br><br>
-      Target customers: LEO constellation operators, SSA providers looking to extend beyond screening into maneuver planning, and satellite insurers who need an auditable safety case.
+      Target customers: LEO constellation operators, SSA providers looking to extend beyond screening into autonomous maneuver planning, and satellite insurers who need an auditable safety case.
     </p>
     <div class="why-quote">
-      "The hard part isn't spotting the conjunction. It's deciding what every satellite involved should do about it — together."
+      "The hard part isn't spotting the conjunction. It's deciding what every satellite involved should do about it — together, instantly, and with a guarantee."
     </div>
   </div>
 </section>
@@ -461,23 +464,23 @@ footer a{color:var(--green);text-decoration:none;}
 <section id="model">
   <div class="model-inner">
     <div class="eyebrow">Roadmap & The Ask</div>
-    <h2>From working prototype<br>to validated multi-satellite demo</h2>
-    <p class="lead">Full orbit propagation, two-stage conjunction screening, verified frame transforms, and the intelligent path planner already run end-to-end on synthetic scenarios.</p>
+    <h2>From working prototype<br>to validated multi‑satellite autopilot demo</h2>
+    <p class="lead">Full orbit propagation, two‑stage conjunction screening, verified frame transforms, and the intelligent path planner already run end‑to‑end on synthetic scenarios — including adaptive responses to simulated unknown objects.</p>
     <div class="phase-row">
       <div class="phase">
         <div class="phase-node">1</div>
         <h3>Coordination Integration</h3>
-        <p>Coordination layer integrated with the path planner — a fast, working multi-satellite baseline.</p>
+        <p>Coordination layer integrated with the path planner — a fast, working multi‑satellite baseline.</p>
       </div>
       <div class="phase">
         <div class="phase-node">2</div>
-        <h3>Autonomous Coordination</h3>
-        <p>Advanced decentralized coordination logic developed and benchmarked against operational baselines.</p>
+        <h3>Adaptive Response Layer</h3>
+        <p>Unknown‑object detection and minutes‑not‑days reaction logic developed and benchmarked.</p>
       </div>
       <div class="phase">
         <div class="phase-node">3</div>
         <h3>Validated Demo</h3>
-        <p>Multi-satellite avoidance demonstrated against decentralized-greedy and baseline-only approaches.</p>
+        <p>Multi‑satellite avoidance and unknown‑object response demonstrated against realistic scenarios.</p>
       </div>
       <div class="phase">
         <div class="phase-node">4</div>
@@ -486,8 +489,8 @@ footer a{color:var(--green);text-decoration:none;}
       </div>
     </div>
     <div class="ask-box">
-      <h3>Raising a pre-seed round</h3>
-      <p>To fund the path from prototype to a validated multi-satellite avoidance demo, and to bring on a technical co-founder with orbital mechanics / controls background. We're also looking for a pilot conversation with a constellation operator or SSA provider.</p>
+      <h3>Raising a pre‑seed round</h3>
+      <p>To fund the path from prototype to a validated multi‑satellite autopilot demo, and to bring on a technical co‑founder with orbital mechanics / controls background. We're also looking for a pilot conversation with a constellation operator or SSA provider.</p>
     </div>
   </div>
 </section>
@@ -496,16 +499,16 @@ footer a{color:var(--green);text-decoration:none;}
 <section id="team">
   <div class="team-inner">
     <div class="eyebrow">Team</div>
-    <h2>Two co-founders.<br>Built for this problem specifically.</h2>
+    <h2>Two co‑founders.<br>Built for this problem specifically.</h2>
     <div class="team-grid">
       <div class="t-card">
-        <div class="t-role">CTO & Co-Founder</div>
+        <div class="t-role">CTO & Co‑Founder</div>
         <h3>Menah Hammad</h3>
         <p>Space Systems Engineer. M.Sc. Satellite Technology, Würzburg / Carleton. Spacecraft autonomy, GNC, and applied machine learning across five countries and seven institutions.</p>
         <a href="https://github.com/menatallh" target="_blank">github.com/menatallh →</a>
       </div>
       <div class="t-card">
-        <div class="t-role">CEO & Co-Founder</div>
+        <div class="t-role">CEO & Co‑Founder</div>
         <h3>May Hammad</h3>
         <p>Space Systems Engineer. M.Sc. Satellite Technology, Würzburg / Carleton. Reinforcement learning for constellation design at ZFT Würzburg. Published researcher in spaceborne optical navigation.</p>
         <a href="https://github.com/mayhammad277" target="_blank">github.com/mayhammad277 →</a>
@@ -517,7 +520,7 @@ footer a{color:var(--green);text-decoration:none;}
 <!-- FOOTER -->
 <footer>
   <div class="f-logo">ORBIT<span>FLOW</span> DYNAMICS</div>
-  <p>Structured, propellant-efficient collision avoidance for satellite constellations.</p>
+  <p>Structured autopilot for propellant‑efficient, collision‑free satellite constellations.</p>
   <p>
     <a href="https://github.com/menatallh" target="_blank">github.com/menatallh</a>
     &nbsp;·&nbsp;
