@@ -408,7 +408,7 @@
       line-height: 1.65;
     }
 
-    /* DEMO */
+    /* DEMO SECTION — Two videos */
     #demo {
       padding: 6rem 3rem;
       background: var(--navy);
@@ -417,15 +417,28 @@
       max-width: 1120px;
       margin: 0 auto;
     }
-    .video-frame {
+    .demo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
       margin-top: 2.5rem;
+    }
+    .demo-item {
+      background: var(--panel);
+      border-radius: 10px;
+      border: 1px solid rgba(61, 220, 151, .12);
+      overflow: hidden;
+      transition: border-color .25s;
+    }
+    .demo-item:hover {
+      border-color: rgba(61, 220, 151, .35);
+    }
+    .video-frame {
       position: relative;
       width: 100%;
       aspect-ratio: 16 / 9;
-      border-radius: 10px;
-      overflow: hidden;
-      border: 1px solid rgba(61, 220, 151, .2);
       background: var(--mid);
+      overflow: hidden;
     }
     .video-frame iframe {
       position: absolute;
@@ -434,19 +447,59 @@
       height: 100%;
       border: 0;
     }
-    .demo-description {
-      margin-top: 1.5rem;
-      color: var(--light);
-      font-size: 1rem;
-      line-height: 1.7;
-      max-width: 780px;
+    .demo-content {
+      padding: 1.5rem 1.75rem 2rem;
     }
-    .demo-description strong {
-      color: var(--white);
-    }
-    .demo-description .highlight {
+    .demo-content .badge {
+      font-family: var(--mono);
+      font-size: .65rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
       color: var(--green);
+      background: rgba(61, 220, 151, .12);
+      padding: .25rem .65rem;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: .75rem;
+      border: 1px solid rgba(61, 220, 151, .15);
+    }
+    .demo-content h3 {
+      font-size: 1.15rem;
       font-weight: 600;
+      color: var(--white);
+      margin-bottom: .6rem;
+      line-height: 1.3;
+    }
+    .demo-content p {
+      font-size: .9rem;
+      color: var(--light);
+      line-height: 1.7;
+      margin-bottom: .5rem;
+    }
+    .demo-content .highlight {
+      color: var(--green);
+      font-weight: 500;
+    }
+    .demo-content .meta {
+      font-size: .8rem;
+      color: var(--grey);
+      margin-top: .6rem;
+      border-top: 1px solid rgba(61, 220, 151, .08);
+      padding-top: .8rem;
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+    .demo-content .meta span {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+    }
+    @media (max-width: 900px) {
+      .demo-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
     }
 
     /* DIFFERENTIATION */
@@ -1019,19 +1072,47 @@
     </div>
   </section>
 
-  <!-- DEMO (with pitch video) -->
+  <!-- DEMO — Two videos: Baseline & Pitch -->
   <section id="demo">
     <div class="demo-inner">
-      <div class="eyebrow">Demo</div>
-      <h2>Pitch video: autopilot in action</h2>
-      <p class="lead">Watch the full walkthrough — intelligent path planning, command generation, fleet‑wide coordination, and adaptive response to unknown objects resolving a multi‑satellite encounter.</p>
-      <div class="video-frame">
-        <!-- YouTube embed with the provided pitch video link -->
-        <iframe src="https://www.youtube.com/embed/-g7qmNbdqNo" title="OrbitFlow Dynamics Pitch Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-      <div class="demo-description">
-        <p><strong>📹 Pitch video overview:</strong> This 3-minute walkthrough demonstrates how OrbitFlow transforms raw conjunction data into a <span class="highlight">complete, ready-to-execute maneuver command</span> with a deterministic safety certificate. See the autopilot coordinate a fleet of satellites through a crowded LEO environment, handle a non‑cooperative object with no prior tracking, and deliver the final command file — all while keeping the human operator in the loop with a single <strong>“Approve & Execute”</strong> click.</p>
-        <p style="margin-top:0.5rem; color:var(--grey);">🎯 <strong>Key moments:</strong> 0:00 – Scenario setup (high‑density LEO) · 0:32 – Path planner finds optimal detours · 1:10 – Joint fleet coordination de‑conflicts · 1:48 – Adaptive response to unknown debris · 2:20 – Command generation & safety certificate · 2:45 – Operator approval flow.</p>
+      <div class="eyebrow">Demo Library</div>
+      <h2>Two views of the autopilot</h2>
+      <p class="lead">Watch the <strong>Baseline Scenario</strong> to see the complete maneuver loop in action, and the <strong>Founders' Pitch</strong> for the full vision and market context.</p>
+
+      <div class="demo-grid">
+        <!-- Video 1: Baseline Scenario -->
+        <div class="demo-item">
+          <div class="video-frame">
+            <iframe src="https://www.youtube.com/embed/-g7qmNbdqNo" title="OrbitFlow Baseline Autopilot Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="demo-content">
+            <span class="badge">⚙️ Baseline Autopilot</span>
+            <h3>Not an Alert. An Autopilot.</h3>
+            <p>This simulation demonstrates the core OrbitFlow engine in a dense LEO environment. Watch as a high-risk conjunction triggers our proprietary path planner to calculate minimal-ΔV detours, coordinate the entire fleet (handling both cooperative and non‑cooperative objects), and generate a <span class="highlight">complete, ready-to-execute command file</span> with a deterministic safety certificate.</p>
+            <div class="meta">
+              <span>⏱️ 2:30</span>
+              <span>🛰️ Fleet: 6 satellites + 1 unknown</span>
+              <span>✅ Safety shield verified</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video 2: Founders' Pitch -->
+        <div class="demo-item">
+          <div class="video-frame">
+            <iframe src="https://www.youtube.com/embed/-KxNMVCNC18" title="OrbitFlow Founders Pitch" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="demo-content">
+            <span class="badge">🎤 Founders' Pitch</span>
+            <h3>The vision: why constellations need an autopilot</h3>
+            <p>Co-founders Menah and May Hammad walk through the market inflection point: <span class="highlight">1M+ annual maneuvers</span> by 2027, the failure of legacy alert systems, and how OrbitFlow transforms operators from ground-level executors into mission supervisors. Includes the technical deep-dive and the business case.</p>
+            <div class="meta">
+              <span>⏱️ 4:10</span>
+              <span>📈 Market: $2.4B TAM by 2030</span>
+              <span>🚀 Pre-seed round open</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
