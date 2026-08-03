@@ -1,5 +1,5 @@
 # OrbitFlow-STM 🌌
-*(🛰️ OrbitFlow Dynamics | Multi-Agent Space Traffic Management ⚡)*
+*(🛰️ OrbitFlow Sync | Multi-Agent Space Traffic Management ⚡)*
 
 ---
 
