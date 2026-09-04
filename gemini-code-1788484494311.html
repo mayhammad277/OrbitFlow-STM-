@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3-Shell Multi-Agent Satellite Constellation Simulation</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #0b0f19;
+            color: #e2e8f0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+        #app {
+            display: flex;
+            height: 100vh;
+        }
+        #canvas-container {
+            flex-grow: 1;
+            position: relative;
+        }
+        canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        #sidebar {
+            width: 360px;
+            background-color: #111827;
+            border-left: 1px solid #1f2937;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 10;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+        }
+        h2 { font-size: 1.1rem; margin-top: 0; color: #38bdf8; border-bottom: 1px solid #374151; padding-bottom: 6px;}
+        .panel-section {
+            background: #1f2937;
+            padding: 10px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+        }
+        button {
+            background-color: #0284c7;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+            width: 100%;
+        }
+        button:hover { background-color: #0369a1; }
+        button.danger { background-color: #dc2626; }
+        button.danger:hover { background-color: #b91c1c; }
+        .stat-row { display: flex; justify-content: space-between; margin-bottom: 4px; }
+        .stat-label { color: #9ca3af; }
+        .stat-value { font-weight: bold; color: #f3f4f6; }
+        .badge {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+        .badge-normal { background: #065f46; color: #34d399; }
+        .badge-maneuver { background: #7f1d1d; color: #fca5a5; }
+        #log-box {
+            flex-grow: 1;
+            background: #030712;
+            border: 1px solid #374151;
+            border-radius: 6px;
+            padding: 8px;
+            font-family: monospace;
+            font-size: 0.72rem;
+            overflow-y: auto;
+            max-height: 140px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div id="canvas-container">
+            <canvas id="simCanvas"></canvas>
+        </div>
+        <div id="sidebar">
+            <h2>Multi-Shell Architecture</h2>
+            
+            <div class="panel-section">
+                <div class="stat-row"><span class="stat-label">System State:</span> <span id="statusBadge" class="badge badge-normal">NOMINAL</span></div>
+                <div class="stat-row"><span class="stat-label">Shell 1 (Inner):</span> <span class="stat-value">4 Nodes (Fast)</span></div>
+                <div class="stat-row"><span class="stat-label">Shell 2 (Middle):</span> <span class="stat-value">6 Nodes (Nominal)</span></div>
+                <div class="stat-row"><span class="stat-label">Shell 3 (Outer):</span> <span class="stat-value">6 Nodes (Slow)</span></div>
+                <div class="stat-row"><span class="stat-label">Cross-Shell Links:</span> <span class="stat-value" id="crossLinks">Active</span></div>
+            </div>
+
+            <div class="panel-section">
+                <h3>Simulation Controls</h3>
+                <p style="font-size: 0.75rem; color: #9ca3af; margin-top:0;">Inject a debris vector into Shell 2 to test cross-shell proximity checks & local buffering.</p>
+                <button id="triggerBtn" class="danger">Inject Shell-2 Debris Threat</button>
+            </div>
+
+            <div class="panel-section" style="flex-grow: 1; display: flex; flex-direction: column;">
+                <h3>Network & Safety Log</h3>
+                <div id="log-box">Initialized 3-shell constellation.<br>Shell anchors active.<br>A* volumetric routing enabled.</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('simCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = canvas.parentElement.clientWidth;
+            canvas.height = canvas.parentElement.clientHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        let sats = [];
+        let debris = null;
+        let isManeuvering = false;
+        let maneuverTimer = 0;
+
+        class Satellite {
+            constructor(id, shellId, angle, isCentral = false) {
+                this.id = id;
+                this.shellId = shellId; // 1: Inner, 2: Middle, 3: Outer
+                this.isCentral = isCentral;
+                this.angle = angle;
+                
+                // Set radius and speed based on shell layer
+                if (shellId === 1) {
+                    this.orbitRadius = isCentral ? 0 : 80;
+                    this.speed = 0.007;
+                } else if (shellId === 2) {
+                    this.orbitRadius = isCentral ? 0 : 135;
+                    this.speed = 0.004;
+                } else {
+                    this.orbitRadius = isCentral ? 0 : 190;
+                    this.speed = 0.0025;
+                }
+                
+                this.x = 0;
+                this.y = 0;
+                this.stateDeltaM = 0; // 0: Normal, 1: Maneuvering
+            }
+
+            update(cx, cy) {
+                if (!this.isCentral && this.stateDeltaM === 0) {
+                    this.angle += this.speed;
+                }
+                if (this.isCentral) {
+                    this.x = cx;
+                    this.y = cy;
+                } else {
+                    this.x = cx + Math.cos(this.angle) * this.orbitRadius;
+                    this.y = cy + Math.sin(this.angle) * this.orbitRadius;
+                }
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.isCentral ? 9 : 5, 0, Math.PI * 2);
+                
+                if (this.isCentral) {
+                    ctx.fillStyle = '#fbbf24'; // Gold for Central ECI Anchor
+                } else if (this.stateDeltaM === 1) {
+                    ctx.fillStyle = '#ef4444'; // Red during evasion maneuver
+                } else {
+                    // Color code by shell layer
+                    ctx.fillStyle = this.shellId === 1 ? '#38bdf8' : (this.shellId === 2 ? '#34d399' : '#a78bfa');
+                }
+                ctx.fill();
+                ctx.lineWidth = 1.5;
+                ctx.strokeStyle = this.stateDeltaM === 1 ? '#f87171' : '#1e293b';
+                ctx.stroke();
+
+                ctx.fillStyle = '#9ca3af';
+                ctx.font = '9px sans-serif';
+                ctx.fillText(`S${this.shellId}-${this.id}`, this.x + 8, this.y - 8);
+            }
+        }
+
+        class Debris {
+            constructor(x, y, vx, vy) {
+                this.x = x;
+                this.y = y;
+                this.vx = vx;
+                this.vy = vy;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, 4, 0, Math.PI * 2);
+                ctx.fillStyle = '#f43f5e';
+                ctx.fill();
+                ctx.strokeStyle = 'rgba(244, 63, 94, 0.3)';
+                ctx.lineWidth = 8;
+                ctx.beginPath();
+                ctx.moveTo(this.x, this.y);
+                ctx.lineTo(this.x - this.vx * 12, this.y - this.vy * 12);
+                ctx.stroke();
+            }
+        }
+
+        function initConstellation() {
+            sats = [];
+            let idCounter = 1;
+
+            // Shell 1: Inner (1 Central + 3 Peers)
+            sats.push(new Satellite(idCounter++, 1, 0, true));
+            for (let i = 0; i < 3; i++) {
+                sats.push(new Satellite(idCounter++, 1, (i * Math.PI * 2) / 3, false));
+            }
+
+            // Shell 2: Middle (1 Central + 5 Peers)
+            sats.push(new Satellite(idCounter++, 2, 0, true));
+            for (let i = 0; i < 5; i++) {
+                sats.push(new Satellite(idCounter++, 2, (i * Math.PI * 2) / 5, false));
+            }
+
+            // Shell 3: Outer (1 Central + 5 Peers)
+            sats.push(new Satellite(idCounter++, 3, 0, true));
+            for (let i = 0; i < 5; i++) {
+                sats.push(new Satellite(idCounter++, 3, (i * Math.PI * 2) / 5, false));
+            }
+        }
+        initConstellation();
+
+        function logEvent(msg) {
+            const logBox = document.getElementById('log-box');
+            logBox.innerHTML += `<br>[${new Date().toLocaleTimeString()}] ${msg}`;
+            logBox.scrollTop = logBox.scrollHeight;
+        }
+
+        document.getElementById('triggerBtn').addEventListener('click', () => {
+            if (isManeuvering) return;
+            isManeuvering = true;
+            maneuverTimer = 60;
+
+            // Target a specific peer in Shell 2 (e.g., index 6)
+            let targetSat = sats.filter(s => s.shellId === 2 && !s.isCentral)[0];
+            debris = new Debris(targetSat.x - 140, targetSat.y - 140, 3.5, 3.5);
+
+            document.getElementById('statusBadge').className = 'badge badge-maneuver';
+            document.getElementById('statusBadge').innerText = 'SURVIVAL MODE (Evasion)';
+            logEvent(`⚠️ Shell-2 Threat detected near S2 node! Executing safety override.`);
+            logEvent(`🔒 Upstream nodes holding traffic in priority buffers.`);
+        });
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const cx = canvas.width / 2;
+            const cy = canvas.height / 2;
+
+            // Draw 3 Orbital Shell Rings
+            [80, 135, 190].forEach((r, idx) => {
+                ctx.beginPath();
+                ctx.arc(cx, cy, r, 0, Math.PI * 2);
+                ctx.strokeStyle = idx === 0 ? 'rgba(56, 189, 248, 0.15)' : (idx === 1 ? 'rgba(52, 211, 153, 0.15)' : 'rgba(167, 139, 250, 0.15)');
+                ctx.lineWidth = 1;
+                ctx.stroke();
+            });
+
+            // Update Satellites
+            sats.forEach(sat => sat.update(cx, cy));
+
+            // Maneuver sequence timing
+            if (isManeuvering) {
+                maneuverTimer--;
+                let targetSat = sats.filter(s => s.shellId === 2 && !s.isCentral)[0];
+                if (maneuverTimer === 40 && targetSat) {
+                    targetSat.angle += 0.35; // Instantaneous positional shift
+                    targetSat.stateDeltaM = 1;
+                    logEvent(`🚀 S2 Satellite executed 3D Delta-V evasive burn.`);
+                }
+                if (maneuverTimer === 20 && targetSat) {
+                    targetSat.stateDeltaM = 0;
+                    logEvent(`🔄 Local physical cluster re-indexed; A* paths healed.`);
+                }
+                if (maneuverTimer <= 0) {
+                    isManeuvering = false;
+                    debris = null;
+                    document.getElementById('statusBadge').className = 'badge badge-normal';
+                    document.getElementById('statusBadge').innerText = 'NOMINAL';
+                    logEvent(`✅ Multi-shell network stable. Routing/coverage resumed.`);
+                }
+            }
+
+            if (debris) {
+                debris.update();
+                debris.draw();
+            }
+
+            // Draw Intra-Shell and Cross-Shell Routing Links
+            for (let i = 0; i < sats.length; i++) {
+                for (let j = i + 1; j < sats.length; j++) {
+                    let dist = Math.hypot(sats[i].x - sats[j].x, sats[i].y - sats[j].y);
+                    
+                    // Connect nodes within a communication threshold
+                    let threshold = (sats[i].shellId === sats[j].shellId) ? 85 : 70;
+                    
+                    if (dist < threshold) {
+                        ctx.beginPath();
+                        ctx.moveTo(sats[i].x, sats[i].y);
+                        ctx.lineTo(sats[j].x, sats[j].y);
+                        
+                        // Highlight buffering links during maneuver
+                        if (isManeuvering && (sats[i].stateDeltaM === 1 || sats[j].stateDeltaM === 1)) {
+                            ctx.strokeStyle = 'rgba(239, 68, 68, 0.6)';
+                            ctx.setLineDash([3, 3]);
+                        } else if (sats[i].shellId !== sats[j].shellId) {
+                            ctx.strokeStyle = 'rgba(251, 191, 36, 0.25)'; // Cross-shell bridge link
+                            ctx.setLineDash([2, 2]);
+                        } else {
+                            ctx.strokeStyle = 'rgba(148, 163, 184, 0.15)'; // Intra-shell link
+                            ctx.setLineDash([]);
+                        }
+                        
+                        ctx.lineWidth = 1;
+                        ctx.stroke();
+                        ctx.setLineDash([]);
+                    }
+                }
+            }
+
+            sats.forEach(sat => sat.draw());
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+</html>
