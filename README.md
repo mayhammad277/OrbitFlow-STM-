@@ -2,9 +2,7 @@
 
 **Autonomous mission design and constellation architecture — from first orbit to end of life.**
 
-Not an alert. An autopilot for your constellation — and the engine that designs it in the first place.
 
-[Request a Pilot](mailto:hello@orbitflow-dynamics.com) · [Menah Hammad](https://github.com/menatallh) · [May Hammad](https://github.com/mayhammad277)
 
 ---
 
