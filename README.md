@@ -1,90 +1,136 @@
-# OrbitFlow-STM 🌌
-*(🛰️ OrbitFlow Sync | Multi-Agent Space Traffic Management ⚡)*
+# OrbitFlow Dynamics
+
+**Autonomous mission design and constellation architecture — from first orbit to end of life.**
+
+Not an alert. An autopilot for your constellation — and the engine that designs it in the first place.
+
+[Request a Pilot](mailto:hello@orbitflow-dynamics.com) · [Menah Hammad](https://github.com/menatallh) · [May Hammad](https://github.com/mayhammad277)
 
 ---
 
-## 🌌 The Mission
+## Table of Contents
 
-Close-approach events between satellites are rising sharply as constellations scale into the thousands[cite: 1]. Current operational standards rely heavily on manual conjunction reviews or simple decentralized avoidance rules[cite: 1]. These legacy methods are slow, propellant-wasteful, and increasingly untenable as encounter rates grow[cite: 1]. Fully learned "black-box" AI solutions, meanwhile, cannot be certified or easily explained to regulators and insurers[cite: 1].
-
-**OrbitFlow** provides an intelligence layer, not just a recommendation feed[cite: 1]. We solve the multi-agent traffic management problem through a superior system architecture that combines rigorous physics-grounded planning with scalable, coordinated decision-making—delivering outcomes that legacy providers cannot match.
-
-> **Visualizing Our Architecture:** Our logo directly represents our technological vision. The **dashed orbital rings** symbolize the discrete, safe trajectory options we generate for each satellite. The **glowing nodes** represent individual spacecraft, and the **central geometric mesh** connecting them illustrates our fleet-wide coordination layer, which optimizes maneuvers jointly across all satellites in an encounter.
-
----
-
-## ⚙️ Core Capabilities
-
-Our system is built around four key capabilities that together deliver a complete, certifiable collision-avoidance solution.
-
-### 1. Intelligent Path Planning
-
-- Automatically generates the safest, lowest-fuel route options for each satellite, well ahead of a close approach[cite: 3].
-- Provides a clear, explainable set of choices rather than an opaque recommendation[cite: 3].
-- Ensures every maneuver option is physically grounded and auditable by regulators and insurers[cite: 1].
-- Our proprietary planning engine explores the maneuver space intelligently to identify optimal trajectories that balance safety and efficiency.
-
-### 2. Fleet-Wide Coordination
-
-- Optimizes maneuvers across the entire fleet at once, instead of letting each satellite dodge independently[cite: 3].
-- Prevents the cascading problem where one satellite's avoidance creates a new conflict with a neighbor[cite: 1].
-- Minimizes total propellant consumption across the constellation while enforcing separation constraints[cite: 1].
-- Our multi-agent coordination layer evaluates joint maneuver strategies to find the globally optimal solution for the whole constellation.
-
-### 3. Adaptive Real-Time Response
-
-- Reacts safely to sudden, unexpected objects—even fresh debris with no tracking history—within minutes[cite: 3].
-- Does not wait days for a full tracking record to be built before acting[cite: 3].
-- Delivers safe route options in seconds, not hours[cite: 3].
-- Advanced onboard autonomy enables rapid decision-making without relying on slow ground-in-the-loop processes.
-
-### 4. Guaranteed Safety Layer
-
-- Every maneuver is checked against a hard, mathematical safety guarantee before it is ever sent to the spacecraft[cite: 3].
-- Provides a deterministic promise, not a statistical suggestion[cite: 3].
-- Makes the system certifiable and auditable—a critical requirement for regulators and insurers[cite: 1].
-- Our constraint-enforcement engine acts as a safety filter, ensuring separation guarantees hold in all scenarios.
-
-### 5. Superior Architecture
-
-- **Physics-Grounded Foundation:** All planning is rooted in actual orbital dynamics, not purely data-driven approximations. This ensures physical realism and eliminates the hallucination risks of pure machine learning approaches.
-- **Hybrid Planning Framework:** We combine global orbital propagation with local relative-motion planning to keep the problem tractable without sacrificing accuracy. This allows us to scale to large constellations while maintaining real-time performance.
-- **Explainable by Design:** Unlike black-box AI systems, our architecture produces auditable, defensible maneuver plans that regulators and insurers can review and certify.
-- **Guaranteed Outcomes:** We don't just advise—we guarantee. Our system provides mathematical certainty that maneuvers are safe before execution.
+- [Overview](#overview)
+- [The Problem](#the-problem)
+- [The Platform — Four Pillars](#the-platform--four-pillars)
+- [How the Autopilot Works](#how-the-autopilot-works)
+- [Non-Cooperative Object Handling](#non-cooperative-object-handling)
+- [Formation Flight — Inspection & Touch-and-Go](#formation-flight--inspection--touch-and-go)
+- [Why OrbitFlow](#why-orbitflow)
+- [Market Opportunity](#market-opportunity)
+- [Roadmap](#roadmap)
+- [Team](#team)
+- [Demos](#demos)
+- [Contact](#contact)
 
 ---
 
-## 🚀 Current Prototype Status
+## Overview
 
-We have successfully built a working prototype running end-to-end on synthetic conjunction scenarios[cite: 1]. The current build validates the feasibility of our core approach, including:
+OrbitFlow Dynamics is the autonomous mission-design and constellation-architecture platform that plans a fleet's full lifecycle — coverage, station-keeping, collision avoidance, and disposal — and keeps recomputing it as conditions change, from LEO through cislunar and proximity operations.
 
-- ✅ Full orbit propagation and conjunction screening.
-- ✅ Verified relative-motion planning.
-- ✅ Active path generation for safe trajectory options.
-- ✅ Initial coordination logic for multi-satellite encounters.
+For every close-approach event, we generate the **complete, ready-to-execute maneuver command**, coordinate it across the fleet, and guarantee its safety mathematically. The human operator retains final authority with a single **"Approve & Execute"** click — turning your team from ground operators into mission supervisors.
 
----
+We react to unknown objects in **minutes (not days)** and handle both **cooperative fleet members** and **non-cooperative targets** (debris, silent spacecraft) with equal rigor.
 
-## 🤝 Competitive Advantage
+## The Problem
 
-Most space traffic management (STM) companies today sit strictly at the detection and decision-support layer, handing each operator a single-satellite maneuver recommendation[cite: 1]. Even with AI-assisted risk scoring, avoidance decisions are treated independently[cite: 1].
+Constellations have outgrown manual coordination — and the tools available today stop at the alert.
 
-**OrbitFlow** is fundamentally different:
+| Stat | What it means |
+|---|---|
+| **355,000+** | Starlink collision-avoidance maneuvers in the past year — triple 2024's total |
+| **60–85%** | Success rate of GEO disposal attempts (ESA) — most failures trace to decisions made too late |
+| **5 yrs** | New FCC LEO deorbit window — down from the 25-year guideline most fleets were designed around |
 
-| **Dimension** | **Legacy STM Providers** | **OrbitFlow Dynamics** |
-| :--- | :--- | :--- |
-| **Coordination** | Reacts satellite by satellite, in isolation | Plans and optimizes the whole fleet together, in one pass[cite: 4] |
-| **Response Speed** | Minutes to hours of ground review before a decision | Safe route options generated in seconds[cite: 4] |
-| **Unknown Objects** | Waits 24–48 hours for a full tracking record before acting | Reacts safely within minutes, even to objects with no tracking history[cite: 4] |
-| **Safety Margins** | Fixed, one-size-fits-all distance thresholds | Margins that automatically tighten or widen based on real tracking confidence[cite: 4] |
-| **Safety Assurance** | Advisory alerts—final call and liability sit with a human operator | A built-in, mathematically guaranteed safety check before every maneuver[cite: 4] |
-| **Planning Approach** | Decentralized, satellite-by-satellite | Centralized fleet-wide optimization |
-| **Outcome** | Recommendations | Guarantees |
+Legacy providers stop at the conjunction alert — they tell you something might hit, not what to do about it. Independent, satellite-by-satellite avoidance wastes propellant and can create new conflicts while resolving old ones. And traditional systems wait 24–48 hours for a full tracking record before acting on an unknown object — a delay a dense LEO environment can't afford.
 
-Our physics-grounded planning and coordination architecture provides a defensible certifiability story that pure end-to-end ML approaches cannot offer[cite: 1]. We don't just detect problems—we solve them, with mathematical certainty.
+## The Platform — Four Pillars
 
-> **vs. Kayhan Pathfinder & Slingshot Beacon:** their model requires continuous, operator-to-operator negotiation between satellites—OrbitFlow coordinates the whole encounter in one pass[cite: 4].
+OrbitFlow isn't a point solution bolted onto your constellation after launch. One engine designs the fleet, keeps it safe, extends past LEO, and gets you close to anything that needs a closer look.
 
+### 01 — Dynamic Fleet Orchestration
+**Coverage, phasing, and scale — designed in, not bolted on.**
+We architect a constellation's coverage geometry, orbital phasing, and slot assignment alongside its safety and disposal budget, so a fleet's growth plan and its collision-avoidance plan are never fighting each other. As the fleet scales, the architecture re-optimizes automatically instead of being redesigned from scratch.
+
+### 02 — Zero-Debris Lifecycle Engine
+**Collision avoidance and disposal, continuously recomputed.**
+Physics-grounded path planning, joint fleet coordination, and a hard safety guarantee on every maneuver — from first deployment through station-keeping to a disposal plan that adapts in real time instead of a static filing made once at launch.
+
+### 03 — Cislunar & Deep Space Networks
+**The same engine, extended past Earth orbit.**
+Multi-body trajectory design and space domain awareness for cislunar transit and the Earth-Moon economy — NRHO and halo-orbit planning, lunar comms-relay architecture, and tracking built for three-body gravitational dynamics, not the two-body assumptions most LEO tools are built on.
+
+### 04 — Proximity Operations (RPO)
+**Formation flight for missions that need to get close.**
+Adaptive formation keeping, inspection flyby design, and touch-and-go maneuver planning — extending the same trajectory core to servicing, inspection, and non-cooperative rendezvous.
+
+## How the Autopilot Works
+
+*Pillar 02, in detail.*
+
+| Module | What it does |
+|---|---|
+| **01 — Intelligent Path Planning** | Physics-grounded, auditable maneuver generation. Every candidate trajectory is physically realistic and fully explainable — no black box. |
+| **02 — Joint Fleet Coordination** | Selects optimal joint maneuvers across the fleet. Cooperative operators de-conflict jointly; non-cooperative targets get a safe response without requiring their cooperation. |
+| **03 — Hard Safety Guarantee + Command Generation** | Every maneuver is checked against hard separation constraints, then bundled into a ready-to-upload command file with its mathematical safety certificate. |
+| **04 — Adaptive Unknown Object Response** | Reacts safely to unexpected objects — even fresh debris with no tracking history — within minutes, not the 24–48 hours legacy systems require. |
+
+## Non-Cooperative Object Handling
+
+*Pillar 02 continued.* Most of what threatens a constellation doesn't cooperate — derelict upper stages, fragmentation debris, dead satellites. Avoiding them is a fundamentally different problem than coordinating with a fleet member.
+
+- **Continuous catalog fusion** — a live custody picture from multiple SSA sources, not a static daily snapshot
+- **Fresh & uncatalogued debris** — builds a working orbit estimate from sparse initial observations within minutes
+- **Worst-case avoidance planning** — hard, covariance-based separation constraints, not cooperative de-confliction logic
+- **Continuous re-screening** — the avoidance plan adapts in real time as an object closes in
+- **Sensor-agnostic ingestion** — radar, optical, and laser-ranging sources alike
+- **Minutes, not days** — a provisional, safety-conservative plan within minutes of first detection
+
+## Formation Flight — Inspection & Touch-and-Go
+
+*Pillar 04, in detail.* Avoiding a conjunction and flying in formation are opposite problems — one keeps spacecraft apart, the other brings them together on purpose, safely.
+
+- **Adaptive Formation Keeping** — leader-follower, cluster, or distributed formations that re-plan automatically as the mission changes
+- **Inspection Flyby Design** — close-approach paths optimized for viewing geometry, lighting, and standoff safety margins
+- **Touch-and-Go Maneuver Planning** — the full approach, contact, and safe-separation sequence, under the same safety shield throughout
+- **Non-Cooperative Target Handling** — inspection and proximity planning for targets that can't share intent, like tumbling debris or defunct satellites
+
+## Why OrbitFlow
+
+Legacy SSA/STM providers are alert engines — they hand you a risk score and walk away. OrbitFlow is a decision engine: we plan, generate the command, coordinate, and guarantee the outcome, while you keep final authority.
+
+| | Legacy SSA / STM Providers | OrbitFlow Dynamics |
+|---|---|---|
+| **Primary Function** | Monitoring & alerting (CDMs) | Full autopilot — plans, generates commands, coordinates, guarantees |
+| **Maneuver Generation** | Manual, left to the customer | Automated, optimized, ready-to-upload |
+| **Fleet Coordination** | None — isolated, satellite-by-satellite | Joint optimization, cooperative & non-cooperative |
+| **Unknown Objects** | Waits 24–48 hours for tracking | Reacts within minutes |
+| **Safety Assurance** | Statistical, probabilistic warnings | Hard, deterministic safety shield with audit log |
+| **Command Delivery** | Suggestion — operator builds it manually | Ready-to-execute command file with safety certificate |
+| **Human Role** | Executor | Supervisor — reviews and clicks "Approve & Execute" |
+
+## Market Opportunity
+
+| Stat | Source |
+|---|---|
+| **40+** avoidance maneuvers per satellite per year, fleet-wide average at scale | SpaceX FCC filings, 2026 |
+| **~2** actionable conjunction alerts per satellite, per week | ESA Collision Avoidance Challenge |
+| **1M** projected annual maneuvers across one mega-constellation by 2027 | KeepTrack, 2026 estimate |
+| **$0.21B → $0.68B** cislunar SDA market, 2025→2034 (14% CAGR) | Market projection, 2025 |
+
+SpaceX built its own in-house autonomous system because it could afford to — it now runs over 355,000 maneuvers a year — but that system serves SpaceX alone. OneWeb, a fraction of Starlink's size, is already mid-replenishment on its own fleet, proving this isn't a mega-constellation-only problem.
+
+**Target customers:** LEO constellation operators, mid-size fleets managing active replenishment, SSA providers extending beyond screening into autonomous maneuver planning, and satellite insurers needing an auditable safety case.
+
+## Roadmap
+
+Full orbit propagation, two-stage conjunction screening, verified frame transforms, and the intelligent path planner already run end-to-end on synthetic scenarios.
+
+1. **Coordination Integration** — coordination layer integrated with the path planner
+2. **Adaptive Response Layer** — unknown-object detection and minutes-not-days reaction logic, benchmarked
+3. **Validated Demo** — multi-satellite avoidance and unknown-object response against realistic scenarios
+4. **Operator Pilot** — pilot deployment with a constellation operator or SSA provider on real
 ---
 
 ## 🖼️ Scenario Visualizations
@@ -100,24 +146,9 @@ Our physics-grounded planning and coordination architecture provides a defensibl
 ---
 
 
-## 🗺️ Roadmap
-
-| **Phase** | **Milestone** |
-| :--- | :--- |
-| **Concept Validation (current)** | Proof-of-concept simulations validating the core planning and coordination approach[cite: 9] |
-| **Coordinated Demonstration** | A working demonstration of fleet-wide coordination against realistic close-approach scenarios[cite: 9] |
-| **Adaptive Response Development** | Building and testing the real-time adaptive response layer[cite: 9] |
-| **Operator Pilot** | Pilot deployment with a constellation operator or SSA provider on real tracking data[cite: 9] |
-
----
-
 
 
 ---
-
-## 🛠 Contributing & Next Steps
-
-We are currently raising a pre-seed round to validate this prototype with a multi-satellite avoidance demonstration[cite: 8].
 
 
 ## 📖 Full Pitch
