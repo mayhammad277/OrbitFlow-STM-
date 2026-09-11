@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OrbitFlow Dynamics — Autopilot for Constellation Collision Avoidance</title>
+  <title>OrbitFlow Dynamics — Autonomous Mission Design & Constellation Architecture Platform</title>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     /* reset & base */
@@ -702,7 +702,7 @@
     }
     .stat-row {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 1.5rem;
       margin-top: 3rem;
     }
@@ -977,9 +977,12 @@
     </a>
     <ul>
       <li><a href="#problem">Problem</a></li>
+      <li><a href="#pillars">Pillars</a></li>
       <li><a href="#build">Solution</a></li>
+      <li><a href="#debris">Debris</a></li>
       <li><a href="#diff">Why Us</a></li>
       <li><a href="#leop">LEOP</a></li>
+      <li><a href="#rpo">Formation Flight</a></li>
       <li><a href="#demo">Demo</a></li>
       <li><a href="#why">Market</a></li>
       <li><a href="#model">Roadmap</a></li>
@@ -991,10 +994,10 @@
   <section id="hero">
     <div class="hero-inner">
       <div>
-        <div class="hero-eyebrow">Structured Autopilot for Orbital Traffic</div>
+        <div class="hero-eyebrow">Autonomous Mission Design & Orbital Autopilot</div>
         <h1>Not an alert.<br /><em>An autopilot</em> for your constellation.</h1>
         <p class="hero-sub">
-          <strong>OrbitFlow Dynamics</strong> OrbitFlow, a software autonomy platform for space traffic management that enables coordinated collision avoidance, risk assessment, and management across large satellite constellations and debris clouds.We are the first true autopilot for satellite constellations. We generate the <strong>complete, ready-to-execute maneuver command</strong>, coordinate it across the fleet, and guarantee its safety mathematically. The human operator retains final authority with a single <span class="highlight">"Approve & Execute"</span> click — turning your team from ground operators into mission supervisors.
+          <strong>OrbitFlow Dynamics</strong> is the autonomous mission-design and constellation-architecture platform that plans a fleet's full lifecycle — coverage, station-keeping, collision avoidance, and disposal — and keeps recomputing it as conditions change, from LEO through cislunar and proximity operations. For every close-approach event, we generate the <strong>complete, ready-to-execute maneuver command</strong>, coordinate it across the fleet, and guarantee its safety mathematically. The human operator retains final authority with a single <span class="highlight">"Approve & Execute"</span> click — turning your team from ground operators into mission supervisors.
           <br><br>
           We react to unknown objects in <strong>minutes (not days)</strong> and handle both <strong>cooperative fleet members</strong> and <strong>non‑cooperative targets</strong> (debris, silent spacecraft) with equal rigor.
         </p>
@@ -1036,15 +1039,57 @@
         <p>Traditional systems wait 24–48 hours for a full tracking record before acting. In a dense LEO environment, that delay is a luxury you cannot afford.</p>
       </div>
     </div>
-    <div class="p-stat">
-      🛰️ &nbsp;SpaceX alone reported roughly 300,000 collision-avoidance maneuvers to the FCC in 2025 — up about 50% year-over-year, and on pace to approach a million a year by 2027. Alerts are not enough; you need an autopilot.
+    <div class="stat-row" style="margin-top:2.5rem; grid-template-columns: repeat(3, 1fr);">
+      <div class="stat-card">
+        <div class="stat-val" style="font-size:2rem;">355,000+</div>
+        <div class="stat-label">Starlink collision-avoidance maneuvers in the past year — triple 2024's total</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val" style="font-size:2rem;">60–85%</div>
+        <div class="stat-label">Success rate of GEO disposal attempts (ESA) — most failures trace to decisions made too late</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val" style="font-size:2rem;">5 yrs</div>
+        <div class="stat-label">New FCC LEO deorbit window — down from the 25-year guideline most fleets were designed around</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILLARS OVERVIEW -->
+  <section id="pillars" style="padding: 6rem 3rem; background: var(--navy);">
+    <div class="build-inner">
+      <div class="eyebrow">The Platform</div>
+      <h2>Four pillars, one architecture engine</h2>
+      <p class="lead">OrbitFlow isn't a point solution bolted onto your constellation after launch. One engine designs the fleet, keeps it safe, extends past LEO, and gets you close to anything that needs a closer look.</p>
+      <div class="b-grid">
+        <div class="b-card">
+          <div class="b-label">01 — Dynamic Fleet Orchestration</div>
+          <h3>Coverage, phasing, and scale — designed in, not bolted on</h3>
+          <p>We architect a constellation's coverage geometry, orbital phasing, and slot assignment alongside its safety and disposal budget, so a fleet's growth plan and its collision-avoidance plan are never fighting each other. As the fleet scales — new satellites, new shells, replenishment cycles — the architecture re-optimizes automatically instead of being redesigned from scratch.</p>
+        </div>
+        <div class="b-card">
+          <div class="b-label">02 — Zero-Debris Lifecycle Engine</div>
+          <h3>Collision avoidance and disposal, continuously recomputed</h3>
+          <p>The autopilot detailed below: physics-grounded path planning, joint fleet coordination, and a hard safety guarantee on every maneuver — from first deployment through station-keeping to a disposal plan that adapts in real time instead of a static filing made once at launch.</p>
+        </div>
+        <div class="b-card">
+          <div class="b-label">03 — Cislunar & Deep Space Networks</div>
+          <h3>The same engine, extended past Earth orbit</h3>
+          <p>Multi-body trajectory design and space domain awareness for cislunar transit and the Earth-Moon economy — NRHO and halo-orbit planning, lunar comms-relay architecture, and tracking built for three-body gravitational dynamics, not the two-body assumptions most LEO tools are built on.</p>
+        </div>
+        <div class="b-card">
+          <div class="b-label">04 — Proximity Operations (RPO)</div>
+          <h3>Formation flight for missions that need to get close</h3>
+          <p>Adaptive formation keeping, inspection flyby design, and touch-and-go maneuver planning — detailed further down this page — extending the same trajectory core to servicing, inspection, and non-cooperative rendezvous.</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- BUILD -->
   <section id="build">
     <div class="build-inner">
-      <div class="eyebrow">Our Solution</div>
+      <div class="eyebrow">Pillar 02, In Detail</div>
       <h2>A true autopilot, not a black-box alert</h2>
       <p class="lead">We are an <strong>autopilot</strong>, not another warning light. Our proprietary stack plans efficient routes, generates ready-to-execute commands, coordinates the entire fleet, reacts to unknowns in minutes, and guarantees safety before every burn.</p>
       <div class="b-grid">
@@ -1068,6 +1113,45 @@
           <h3>React to fresh debris in minutes, not days</h3>
           <p>While legacy systems wait 24–48 hours for a full tracking record, OrbitFlow reacts safely to unexpected objects — even fresh debris with no tracking history — within minutes. Our adaptive layer handles both cooperative fleet members and non‑cooperative targets with equal rigor.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEBRIS DETECTION & TRACKING -->
+  <section id="debris">
+    <div class="eyebrow">Pillar 02 — Non-Cooperative Objects</div>
+    <h2>See it, track it, avoid it — even when it isn't talking back</h2>
+    <p class="lead">Most of what threatens a constellation doesn't cooperate. Derelict upper stages, fragmentation debris, and dead satellites can't share intent or maneuver out of the way — so avoiding them is a fundamentally different problem than coordinating with a fleet member. OrbitFlow's detection-tracking-avoidance layer is built for exactly that.</p>
+    <div class="p-grid">
+      <div class="p-card">
+        <span class="p-icon">🛰️</span>
+        <h3>Continuous catalog fusion</h3>
+        <p>Ingests tracking updates and conjunction data messages from multiple SSA sources to maintain a live custody picture of every object near the fleet — not a static daily snapshot.</p>
+      </div>
+      <div class="p-card">
+        <span class="p-icon">🧩</span>
+        <h3>Fresh & uncatalogued debris</h3>
+        <p>When an object appears with no tracking history — a fresh fragment, a newly separated piece of hardware — the system builds a working orbit estimate from sparse initial observations and treats it as a credible threat within minutes.</p>
+      </div>
+      <div class="p-card">
+        <span class="p-icon">🛡️</span>
+        <h3>Worst-case avoidance planning</h3>
+        <p>Debris can't maneuver or negotiate. Avoidance trajectories are computed against hard, covariance-based separation constraints — not the cooperative de-confliction logic used between fleet members.</p>
+      </div>
+      <div class="p-card">
+        <span class="p-icon">🔄</span>
+        <h3>Continuous re-screening</h3>
+        <p>Orbit solutions refine continuously as an object closes in, so the avoidance plan adapts in real time instead of committing to a single maneuver computed hours in advance.</p>
+      </div>
+      <div class="p-card">
+        <span class="p-icon">📡</span>
+        <h3>Sensor-agnostic ingestion</h3>
+        <p>Built to take tracking data from radar, optical, and laser-ranging sources alike — so coverage improves as the SSA ecosystem around the fleet grows, without re-architecting the pipeline.</p>
+      </div>
+      <div class="p-card">
+        <span class="p-icon">⚡</span>
+        <h3>Minutes, not days</h3>
+        <p>Legacy systems wait 24–48 hours for a stable tracking record before acting. OrbitFlow generates a provisional, safety-conservative avoidance plan within minutes of first detection, then refines it as more data arrives.</p>
       </div>
     </div>
   </section>
@@ -1245,15 +1329,46 @@
     </div>
   </section>
 
+  <!-- FORMATION FLIGHT / RPO -->
+  <section id="rpo" style="padding: 6rem 3rem; background: linear-gradient(180deg, var(--dark) 0%, var(--navy) 50%, var(--dark) 100%);">
+    <div class="build-inner">
+      <div class="eyebrow">Pillar 04, In Detail</div>
+      <h2>Formation flight for missions that need to get close, not just stay apart</h2>
+      <p class="lead">Avoiding a conjunction and flying in formation are opposite problems — one keeps spacecraft apart, the other brings them together on purpose, safely. OrbitFlow's adaptive formation-flight layer extends the same trajectory-planning core to missions built around proximity: inspection flybys, touch-and-go contact, and multi-satellite servicing formations.</p>
+      <div class="b-grid">
+        <div class="b-card">
+          <div class="b-label">01 — Adaptive Formation Keeping</div>
+          <h3>Relative geometry that adjusts as the mission does</h3>
+          <p>Maintains leader-follower, cluster, or distributed formations between multiple spacecraft, automatically re-planning as the target orbit, mission phase, or fleet composition changes.</p>
+        </div>
+        <div class="b-card">
+          <div class="b-label">02 — Inspection Flyby Design</div>
+          <h3>Close-approach paths built for the sensor, not just the orbit</h3>
+          <p>Plans flyby trajectories around a target satellite or debris object optimized for viewing geometry, lighting conditions, and standoff safety margins — so the inspection asset actually gets the data it needs.</p>
+        </div>
+        <div class="b-card">
+          <div class="b-label">03 — Touch-and-Go Maneuver Planning</div>
+          <h3>Approach, contact, and safe separation — as one planned sequence</h3>
+          <p>Generates the full TAG sequence — approach corridor, contact point, and departure — with the same hard-separation safety shield applied throughout, not just during the final approach.</p>
+        </div>
+        <div class="b-card">
+          <div class="b-label">04 — Non-Cooperative Target Handling</div>
+          <h3>Formation flight even when the target can't help</h3>
+          <p>Extends inspection and proximity planning to targets that can't share intent — tumbling debris, defunct satellites — using the same worst-case uncertainty planning as the avoidance engine, not a separate, brittle mode.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- MARKET -->
   <section id="why">
     <div class="eyebrow">Market Opportunity</div>
     <h2>Avoidance is routine.<br />Autopilots aren't — yet.</h2>
     <div class="stat-row">
       <div class="stat-card">
-        <div class="stat-val">~30</div>
+        <div class="stat-val">40+</div>
         <div class="stat-label">Avoidance maneuvers per satellite per year, fleet‑wide average at scale</div>
-        <span class="stat-src">SpaceX FCC filings, 2025</span>
+        <span class="stat-src">SpaceX FCC filings, 2026</span>
       </div>
       <div class="stat-card">
         <div class="stat-val">~2</div>
@@ -1265,12 +1380,17 @@
         <div class="stat-label">Projected annual maneuvers across just one mega‑constellation by 2027</div>
         <span class="stat-src">KeepTrack, 2026 estimate</span>
       </div>
+      <div class="stat-card">
+        <div class="stat-val" style="font-size:1.7rem;">$0.21B→$0.68B</div>
+        <div class="stat-label">Cislunar SDA market, 2025→2034 (14% CAGR) — before counting LEO or RPO</div>
+        <span class="stat-src">Market projection, 2025</span>
+      </div>
     </div>
     <div class="why-text">
       <p>
-        Conjunction alerts are now a standing operational cost for every constellation operator. But alerts are not solutions. As maneuver volume climbs toward one million per year, independent per‑satellite avoidance stops being merely inefficient and starts actively working against itself. Operators no longer need another alert system — they need an <strong>autopilot</strong> that plans, generates commands, coordinates, and guarantees the fleet's response, while keeping them in the loop.
+        Conjunction alerts are now a standing operational cost for every constellation operator. But alerts are not solutions. SpaceX built its own in-house autonomous system because it could afford to — it now runs over 355,000 maneuvers a year — but that system serves SpaceX alone. OneWeb, a fraction of Starlink's size, is already mid-replenishment on its own fleet, proving this isn't a mega-constellation-only problem. Operators no longer need another alert system — they need an <strong>autopilot</strong> that plans, generates commands, coordinates, and guarantees the fleet's response, while keeping them in the loop, at whatever scale they actually fly, from LEO through cislunar.
         <br><br>
-        Target customers: LEO constellation operators, SSA providers looking to extend beyond screening into autonomous maneuver planning, and satellite insurers who need an auditable safety case.
+        Target customers: LEO constellation operators, mid-size fleets managing active replenishment, SSA providers looking to extend beyond screening into autonomous maneuver planning, and satellite insurers who need an auditable safety case.
       </p>
       <div class="why-quote">
         "The hard part isn't spotting the conjunction. It's deciding what every satellite involved should do about it — together, instantly, and with a guarantee. OrbitFlow does the math; the operator clicks 'Go'."
@@ -1338,7 +1458,7 @@
   <!-- FOOTER -->
   <footer>
     <div class="f-logo">ORBIT<span>FLOW</span> DYNAMICS</div>
-    <p>Structured autopilot for propellant‑efficient, collision‑free satellite constellations.</p>
+    <p>Autonomous mission design and constellation architecture — propellant‑efficient, collision‑free, and disposal‑ready, from LEO to cislunar to touch‑and‑go formation flight.</p>
     <p>
       <a href="https://github.com/menatallh" target="_blank">github.com/menatallh</a>
       &nbsp;·&nbsp;
@@ -1397,5 +1517,3 @@
   <a href="about.html">Go to solution demo Page</a>
 
 </html>
-
-
